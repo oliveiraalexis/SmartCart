@@ -36,6 +36,14 @@ const Product = () => {
                     <View>
                         <DropDownPicker
                             style={styles.dropdown}
+                            dropDownContainerStyle={{
+                                backgroundColor: '#D9D9D9',
+                                maxHeight: 60,
+                                maxWidth: 80,
+                                borderColor: '#D9D9D9',
+                                fontSize: 18,
+                                fontWeight: 'bold'
+                            }}
                             labelStyle={{
                                 fontSize: 18,
                                 fontWeight: 'bold'
@@ -107,7 +115,7 @@ const styles = StyleSheet.create({
     },
     viewdown: {
         flexDirection: 'row',
-        justifyContent: 'space-around'
+        justifyContent: 'space-around',
         marginVertical: 10
     },
     viewdownelements: {
@@ -134,7 +142,7 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         borderRadius: 10,
         backgroundColor: '#D9D9D9',
-        width: '70%',
+        width: 80,
         minHeight: 35,
         maxMenuHeight: 10
     },
