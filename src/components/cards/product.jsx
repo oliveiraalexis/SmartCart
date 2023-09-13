@@ -36,16 +36,18 @@ const Product = () => {
                     <View>
                         <DropDownPicker
                             style={styles.dropdown}
+                            labelStyle={{
+                                fontSize: 18,
+                                fontWeight: 'bold'
+                            }}
                             open={open}
                             value={value}
                             items={items}
                             setOpen={setOpen}
                             setValue={setValue}
                             setItems={setItems}
-                            placeholder=''
 
                             multiple={false}
-                            mode="BADGE"
                         />
                     </View>
                 </View>
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#D9D9D9',
         width: '70%',
         minHeight: 35,
-        alignSelf: 'center'
+        maxMenuHeight: 10
     },
     price: {
         marginTop: 17,
