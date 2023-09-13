@@ -84,10 +84,9 @@ const styles = StyleSheet.create({
     container: {
         width: '100%',
         backgroundColor: '#ffffff',
-        marginBottom: 15,
-        paddingBottom: 10,
         borderBottomColor: '#000000',
-        borderBottomWidth: 3
+        borderBottomWidth: 3,
+        paddingVertical: 10
     },
     title: {
         color: '#000000',
@@ -101,35 +100,34 @@ const styles = StyleSheet.create({
     },
     viewup: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'flex-start',
+        backgroundColor: '#1b8ce9'
 
     },
     viewdown: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        margin: 15,
         backgroundColor: '#e06411'
     },
     viewdownelements: {
-        //backgroundColor: '#1ad1df',
         alignItems: 'center',
         flex: 1
     },
     viewcheck: {
-        justifyContent: 'flex-start',
         flexDirection: 'row',
         alignItems: 'center'
     },
     input: {
         height: 35,
         width: '70%',
-        margin: 12,
+        marginTop: 12,
         borderWidth: 2,
         borderRadius: 5,
         padding: 10,
     },
     dropdown: {
-        margin: 12,
+        marginTop: 12,
         borderWidth: 2,
         borderRadius: 5,
         backgroundColor: 'transparent',
