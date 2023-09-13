@@ -72,7 +72,7 @@ const Product = () => {
                 <View style={styles.viewdownelements}>
                     <Text style={styles.text}>Total</Text>
                     <View style={styles.price}>
-                        <Text style={styles.text}>R$ 100,00</Text>
+                        <Text style={styles.title}>R$ 100,00</Text>
                     </View>
                 </View>
             </View>
@@ -83,32 +83,33 @@ const Product = () => {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        backgroundColor: '#ffffff',
-        borderBottomColor: '#000000',
-        borderBottomWidth: 3,
-        paddingVertical: 10
+        //backgroundColor: '#ffffff',
+        borderBottomColor: '#717785',
+        borderBottomWidth: 2,
+        paddingVertical: 15
     },
     title: {
-        color: '#000000',
+        color: '#ffffff',
         fontWeight: 'bold',
         fontSize: 20,
     },
     text: {
-        color: '#000000',
+        color: '#717785',
         fontWeight: 'bold',
-        fontSize: 17
+        fontSize: 18
     },
     viewup: {
         flexDirection: 'row',
         justifyContent: 'space-between',
         alignItems: 'flex-start',
-        backgroundColor: '#1b8ce9'
+        //backgroundColor: '#1b8ce9'
 
     },
     viewdown: {
         flexDirection: 'row',
         justifyContent: 'space-around',
-        backgroundColor: '#e06411'
+        //backgroundColor: '#e06411',
+        marginVertical: 10
     },
     viewdownelements: {
         alignItems: 'center',
@@ -122,22 +123,24 @@ const styles = StyleSheet.create({
         height: 35,
         width: '70%',
         marginTop: 12,
-        borderWidth: 2,
-        borderRadius: 5,
-        padding: 10,
+        borderRadius: 10,
+        paddingVertical: 5,
+        paddingStart: 10,
+        backgroundColor: '#D9D9D9',
+        fontSize: 20,
+        fontWeight: 'bold'
     },
     dropdown: {
         marginTop: 12,
-        borderWidth: 2,
-        borderRadius: 5,
-        backgroundColor: 'transparent',
+        borderWidth: 0,
+        borderRadius: 10,
+        backgroundColor: '#D9D9D9',
         width: '70%',
         minHeight: 35,
-        alignSelf: 'center',
+        alignSelf: 'center'
     },
     price: {
         marginTop: 17,
-        backgroundColor: '#f0ec14'
     }
 })
 

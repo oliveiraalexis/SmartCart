@@ -15,6 +15,7 @@ const DetalheLista = () => {
                     <Product/>
                     <Product/>
                     <Product/>
+                    <Product/>
                 </View>
             </ScrollView>
             <Footer />
@@ -24,23 +25,22 @@ const DetalheLista = () => {
 
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#0f4cda',
         alignItems: 'center',
         flex: 1
         
     },
     body: {
         width: '100%',
-        backgroundColor: '#940e61',
+        backgroundColor: '#0A0E17',
         flex: 1,
         padding: 20
 
     },
     products: {
-        backgroundColor: '#47fa00',
+        backgroundColor: '#161E33',
         borderRadius: 10,
         paddingHorizontal: 15,
-        paddingVertical: 15,
+        paddingBottom: 15,
         marginBottom: 40
     }
 })
