@@ -137,7 +137,7 @@ const styles = StyleSheet.create({
     },
     price: {
         marginTop: 17,
-        backgroundColor: '#bf30c4'
+        backgroundColor: '#f0ec14'
     }
 })
 
