@@ -85,7 +85,6 @@ const Product = () => {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        //backgroundColor: '#ffffff',
         borderBottomColor: '#717785',
         borderBottomWidth: 2,
         paddingVertical: 15
@@ -103,14 +102,12 @@ const styles = StyleSheet.create({
     viewup: {
         flexDirection: 'row',
         justifyContent: 'space-between',
-        alignItems: 'flex-start',
-        //backgroundColor: '#1b8ce9'
+        alignItems: 'flex-start'
 
     },
     viewdown: {
         flexDirection: 'row',
-        justifyContent: 'space-around',
-        //backgroundColor: '#e06411',
+        justifyContent: 'space-around'
         marginVertical: 10
     },
     viewdownelements: {
