@@ -3,21 +3,28 @@ import { View, StyleSheet, SafeAreaView, ScrollView } from 'react-native'
 import Header from '../../components/header/header'
 import Footer from '../../components/footer/footer'
 import Product from '../../components/cards/product'
+import { FlatList } from 'react-native'
 
 const DetalheLista = () => {
 
     return (
         <SafeAreaView style={styles.container}>
             <Header />
-            <ScrollView style={styles.body}>
+            <View style={styles.body}>
                 <View style={styles.products}>
-                    <Product/>
-                    <Product/>
-                    <Product/>
-                    <Product/>
-                    <Product/>
+                    <FlatList
+                        data={
+                            [
+                                <Product/>,
+                                <Product/>,
+                                <Product/>,
+                            ]
+                        }
+                        renderItem={({item}) => item}
+                    >
+                    </FlatList>
                 </View>
-            </ScrollView>
+            </View>
             <Footer />
         </SafeAreaView>
     )
