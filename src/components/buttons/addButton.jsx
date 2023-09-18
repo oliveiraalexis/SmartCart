@@ -4,16 +4,19 @@ import { View, Text, TouchableHighlight, StyleSheet } from 'react-native'
 const AddButton = () => {
 
     return (
-        <TouchableHighlight style={styles.container}>
-            <View>
-                <Text style={styles.text}>+</Text>
-            </View>
-        </TouchableHighlight>
+        <View style={styles.container}>
+            <TouchableHighlight style={styles.button}>
+                    <Text style={styles.text}>+</Text>
+            </TouchableHighlight>
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
+        alignItems: 'center'
+    },
+    button: {
         width: 60,
         height: 60,
         backgroundColor: '#161E33',

@@ -4,6 +4,7 @@ import Header from '../../components/header/header'
 import Footer from '../../components/footer/footer'
 import Product from '../../components/cards/product'
 import { FlatList } from 'react-native'
+import AddButton from '../../components/buttons/addButton'
 
 const DetalheLista = () => {
 
@@ -24,6 +25,7 @@ const DetalheLista = () => {
                     >
                     </FlatList>
                 </View>
+                <AddButton/>
             </View>
             <Footer />
         </SafeAreaView>
@@ -32,7 +34,6 @@ const DetalheLista = () => {
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
         flex: 1
         
     },
