@@ -1,12 +1,12 @@
 import React from 'react'
 import { View, StyleSheet, SafeAreaView, ScrollView } from 'react-native'
-import Header from '../../components/header/header'
-import Footer from '../../components/footer/footer'
-import Product from '../../components/Product/product'
+import { Header } from '../../components/Header/Header'
+import { Footer } from '../../components/Footer/Footer'
+import { Product } from '../../components/Product/Product'
 import { FlatList } from 'react-native'
-import Button from '../../components/Button/Button'
+import { Button } from '../../components/Button/Button'
 
-const DetalheLista = () => {
+export const DetalheLista = () => {
 
     return (
         <SafeAreaView style={styles.container}>
@@ -52,5 +52,3 @@ const styles = StyleSheet.create({
         marginBottom: 40
     }
 })
-
-export default DetalheLista

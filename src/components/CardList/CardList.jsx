@@ -1,8 +1,8 @@
 import React from 'react'
 import { View, Text, TouchableHighlight, StyleSheet } from 'react-native'
-import Button from '../Button/Button'
+import { Button } from '../Button/Button'
 
-const CardList = () => {
+export const CardList = () => {
 
     return (
         <TouchableHighlight style={styles.container}>
@@ -37,5 +37,3 @@ const styles = StyleSheet.create({
         flex: 1
     }
 })
-
-export default CardList

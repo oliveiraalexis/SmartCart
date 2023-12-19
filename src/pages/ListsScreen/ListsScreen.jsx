@@ -1,10 +1,10 @@
 import React from 'react'
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native'
-import Header from '../../components/Header/Header'
-import Button from '../../components/Button/Button'
-import CardList from '../../components/CardList/CardList'
+import { Header } from '../../components/Header/Header'
+import { Button } from '../../components/Button/Button'
+import { CardList } from '../../components/CardList/CardList'
 
-const ListsScreen = () => {
+export const ListsScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
@@ -42,5 +42,3 @@ const styles = StyleSheet.create({
         textAlign: 'center'
     }
 })
-
-export default ListsScreen

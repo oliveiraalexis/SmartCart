@@ -2,9 +2,9 @@ import React, {useState} from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import CheckBox from '@react-native-community/checkbox'
 import DropDownPicker from 'react-native-dropdown-picker';
-import Button from '../Button/Button';
+import { Button } from '../Button/Button';
 
-const Product = () => {
+export const Product = () => {
 
     const [isSelected, setSelection] = useState(false);
     const [qtde, setQtde] = useState(1);
@@ -150,5 +150,3 @@ const styles = StyleSheet.create({
         marginTop: 17,
     }
 })
-
-export default Product

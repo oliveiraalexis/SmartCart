@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const Header = () => {
+export const Header = () => {
 
 	return (
 		<SafeAreaView style={styles.Container}>
@@ -31,6 +31,4 @@ const styles = StyleSheet.create({
 		fontSize: 15,
 		paddingLeft: 14
 	}
-});
-
-export default Header;
+})
