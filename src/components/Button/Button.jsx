@@ -18,8 +18,8 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     button: {
-        width: 28,
-        height: 28,
+        width: 50,
+        height: 50,
         textAlign: 'center',
         textAlignVertical: 'center'
     }
