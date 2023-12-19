@@ -2,7 +2,7 @@ import React from 'react'
 import { View, StyleSheet, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-const AddButton = ({iconName, bRadius, bBackgroundColor}) => {
+const Button = ({iconName, bRadius, bBackgroundColor}) => {
 
     return (
         <View style={styles.container}>
@@ -25,4 +25,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default (AddButton)
+export default Button

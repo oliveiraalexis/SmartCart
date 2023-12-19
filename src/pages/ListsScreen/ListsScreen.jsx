@@ -1,6 +1,6 @@
 import React from 'react'
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native'
-import Header from '../../components/header/header'
+import Header from '../../components/Header/Header'
 import Button from '../../components/Button/Button'
 import CardList from '../../components/CardList/CardList'
 
