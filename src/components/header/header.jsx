@@ -11,7 +11,7 @@ const Header = () => {
 	return (
 		<SafeAreaView style={styles.Container}>
 			<Icon name="shopping-cart" size={25} color="#FFFFFF" />
-			<Text style={styles.text}>SMARTCART - LISTAS DE COMPRAS</Text>
+			<Text style={styles.text}>LISTAS DE COMPRAS</Text>
 		</SafeAreaView>
 	);
 };

@@ -2,17 +2,17 @@ import React from 'react'
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native'
 import Header from '../../components/header/header'
 import Button from '../../components/Button/Button'
-import ListButton from '../../components/Button/listButton'
+import CardList from '../../components/CardList/CardList'
 
-const Listas = () => {
+const Lists = () => {
 
     return (
         <SafeAreaView style={styles.container}>
             <Header />
             <View style={styles.body}>
-                <ListButton />
-                <ListButton />
-                <ListButton />
+                <CardList />
+                <CardList />
+                <CardList />
                 <Text style={styles.text}>
                     Nenhuma lista criada. {'\n'}Crie uma lista utilizando {'\n'}o botão “+” abaixo.
                 </Text>
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Listas
+export default Lists

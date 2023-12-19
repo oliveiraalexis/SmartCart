@@ -1,12 +1,12 @@
 import React from 'react';
 import { StyleSheet } from 'react-native';
-//import Listas from './pages/listas/listas';
-import DetalheLista from './pages/detalhelista/detalhelista';
+import Lists from './pages/ListsScreen/ListsScreen';
+import DetalheLista from './pages/ListDetailScreen/ListDetailScreen';
 
 const App = () => {
 
 	return (
-		<DetalheLista/>
+		<Lists/>
 	);
 };
 
