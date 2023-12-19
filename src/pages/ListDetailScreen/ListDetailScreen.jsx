@@ -6,7 +6,7 @@ import { FlatList } from 'react-native'
 import Button from '../../components/Button/Button'
 import Product from '../../components/Product/Product'
 
-const DetalheLista = () => {
+const ListDetailScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
@@ -53,4 +53,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default DetalheLista
+export default ListDetailScreen

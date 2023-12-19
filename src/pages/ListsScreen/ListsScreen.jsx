@@ -4,7 +4,7 @@ import Header from '../../components/header/header'
 import Button from '../../components/Button/Button'
 import CardList from '../../components/CardList/CardList'
 
-const Lists = () => {
+const ListsScreen = () => {
 
     return (
         <SafeAreaView style={styles.container}>
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
     }
 })
 
-export default Lists
+export default ListsScreen
