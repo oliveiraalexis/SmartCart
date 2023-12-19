@@ -2,9 +2,9 @@ import React from 'react'
 import { View, StyleSheet, SafeAreaView, ScrollView } from 'react-native'
 import Header from '../../components/header/header'
 import Footer from '../../components/footer/footer'
+import Product from '../../components/Product/product'
 import { FlatList } from 'react-native'
 import Button from '../../components/Button/Button'
-import Product from '../../components/Product/Product'
 
 const DetalheLista = () => {
 
