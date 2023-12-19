@@ -4,7 +4,7 @@ import Header from '../../components/header/header'
 import Footer from '../../components/footer/footer'
 import Product from '../../components/cards/product'
 import { FlatList } from 'react-native'
-import AddButton from '../../components/buttons/addButton'
+import Button from '../../components/Button/Button'
 
 const DetalheLista = () => {
 
@@ -25,7 +25,7 @@ const DetalheLista = () => {
                     >
                     </FlatList>
                 </View>
-                <AddButton/>
+                <Button/>
             </View>
             <Footer />
         </SafeAreaView>

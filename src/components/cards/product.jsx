@@ -1,8 +1,8 @@
 import React, {useState} from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import CheckBox from '@react-native-community/checkbox'
-import DeleteButton from '../buttons/deleteButton'
 import DropDownPicker from 'react-native-dropdown-picker';
+import Button from '../Button/Button';
 
 const Product = () => {
 
@@ -28,7 +28,7 @@ const Product = () => {
                     />
                     <Text style={styles.title}>Torrada Integral Adria</Text>
                 </View>
-                <DeleteButton/>
+                <Button/>
             </View>
             <View style={styles.viewdown}>
                 <View style={styles.viewdownelements}>

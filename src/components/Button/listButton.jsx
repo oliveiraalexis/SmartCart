@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, Text, TouchableHighlight, StyleSheet } from 'react-native'
-import DeleteButton from './deleteButton'
+import Button from './Button'
 
 const ListButton = () => {
 
@@ -8,7 +8,7 @@ const ListButton = () => {
         <TouchableHighlight style={styles.container}>
             <View style={styles.view}>
                 <Text style={styles.text}>Lista de compras de AGO/2023</Text>
-                <DeleteButton />
+                <Button iconName='trash' bRadius={5} bBackgroundColor='#8F0000'/>
             </View>
         </TouchableHighlight>
     )
@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
     text: {
         color: '#FFFFFF',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 15,
         padding: 20
         
     },

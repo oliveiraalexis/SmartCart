@@ -1,8 +1,8 @@
 import React from 'react'
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native'
 import Header from '../../components/header/header'
-import AddButton from '../../components/buttons/addButton'
-import ListButton from '../../components/buttons/listButton'
+import Button from '../../components/Button/Button'
+import ListButton from '../../components/Button/listButton'
 
 const Listas = () => {
 
@@ -16,7 +16,7 @@ const Listas = () => {
                 <Text style={styles.text}>
                     Nenhuma lista criada. {'\n'}Crie uma lista utilizando {'\n'}o botão “+” abaixo.
                 </Text>
-                <AddButton/>
+                <Button iconName='plus' bRadius={30} bBackgroundColor='#161E33'/>
             </View>
         </SafeAreaView>
     )
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     text: {
         color: '#717785',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 15,
         alignItems: 'center',
         margin: 20,
         textAlign: 'center'
