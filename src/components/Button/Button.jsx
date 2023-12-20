@@ -2,25 +2,18 @@ import React from 'react'
 import { View, StyleSheet, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 
-export const Button = ({iconName, bRadius, bBackgroundColor}) => {
+export const Button = ({iconName, bRadius, bBackgroundColor, width, height}) => {
 
     return (
-        <View style={styles.container}>
-            <Pressable backgroundColor={bBackgroundColor} borderRadius={bRadius}>
-                <Icon style={styles.button} name={iconName} size={20} color="#FFFFFF" />
-            </Pressable>
-        </View>
+        <Pressable style={{width: width, height: height, ...styles.container}} backgroundColor={bBackgroundColor} borderRadius={bRadius}>
+            <Icon style={styles.button} name={iconName} size={20} color="#FFFFFF" />
+        </Pressable>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center'
-    },
-    button: {
-        width: 50,
-        height: 50,
-        textAlign: 'center',
-        textAlignVertical: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     }
 })
