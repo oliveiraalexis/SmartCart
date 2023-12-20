@@ -16,7 +16,7 @@ export const ListsScreen = () => {
                 <Text style={styles.text}>
                     Nenhuma lista criada. {'\n'}Crie uma lista utilizando {'\n'}o botão “+” abaixo.
                 </Text>
-                <Button iconName='plus' bRadius={30} bBackgroundColor='#161E33'/>
+                <Button iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
             </View>
         </SafeAreaView>
     )
