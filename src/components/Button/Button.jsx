@@ -6,7 +6,7 @@ export const Button = ({iconName, bRadius, bBackgroundColor, width, height}) => 
 
     return (
         <Pressable style={{width: width, height: height, ...styles.container}} backgroundColor={bBackgroundColor} borderRadius={bRadius}>
-            <Icon style={styles.button} name={iconName} size={20} color="#FFFFFF" />
+            <Icon style={styles.button} name={iconName} size={17} color="#FFFFFF" />
         </Pressable>
     )
 }
