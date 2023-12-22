@@ -1,37 +1,21 @@
 import React, {useState} from 'react'
-import { View, Text, StyleSheet, TextInput, Platform } from 'react-native'
-import CheckBox from '@react-native-community/checkbox'
+import { View, Text, StyleSheet, Platform } from 'react-native'
 import { Button } from '../Button/Button';
+import { Checkbox } from '../Checkbox/Checkbox';
 
 export const Product = () => {
 
     const [isSelected, setSelection] = useState(false);
-    const checkColor = Platform.OS === 'android' 
-        ? {true: '#FFFFFF', false: '#FFFFFF'} 
-        : {
-            tintColor: '#FFFFFF',
-            onCheckColor: '#FFFFFF',
-            onFillColor: '#FFFFFF',
-            onTintColor: '#FFFFFF'
-        }
 
-        console.log(checkColor)
+    function onValueChange(){
+        setSelection(prev => !prev)
+    }
 
     return (
         <View style={styles.container}>
             <View style={styles.viewtop}>
                 <View style={styles.viewleft}>                
-                    <CheckBox
-                        disabled={false}
-                        value={isSelected}
-                        onValueChange={() => setSelection(!isSelected)}
-                        tintColors={checkColor}
-                        //IOS colors:
-                        // tintColor= '#FFFFFF'
-                        // onCheckColor= '#FFFFFF'
-                        // onFillColor= '#FFFFFF'
-                        // onTintColor= '#FFFFFF'
-                    />
+                    <Checkbox value={isSelected} onValueChange={onValueChange}/>
                     <Text style={styles.title}>Torrada Integral Adria</Text>
                 </View>
                 <View style={styles.viewright}>
