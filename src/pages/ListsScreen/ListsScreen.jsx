@@ -48,7 +48,7 @@ export const ListsScreen = () => {
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                     >
-                        <ListEdit addList={addList}/>
+                        <ListEdit addList={addList} toggleListEdit={toggleListEdit}/>
                 </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>

@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { View, TextInput, Text, StyleSheet } from 'react-native'
 import { Button } from '../Button/Button';
 
-export const ListEdit = ({addList}) => {
+export const ListEdit = ({addList, toggleListEdit}) => {
 
     const [listName, setListName] = useState('');
 
@@ -15,11 +15,12 @@ export const ListEdit = ({addList}) => {
                     onChangeText={setListName}
                     value={listName}
                     defaultValue=''
+                    autoFocus={true}
                 />
             </View>
             <View style={styles.button}>
                 <Button onPress={() => addList(listName)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
-                <Button iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
+                <Button onPress={() => toggleListEdit()} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>
     )
