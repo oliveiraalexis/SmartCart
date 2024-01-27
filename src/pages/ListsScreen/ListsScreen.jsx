@@ -12,11 +12,18 @@ export const ListsScreen = () => {
     const bottomSheetRef = useRef(null);
 	const snapPoints = useMemo(() => ['25%'], []);
 
-    const [shopLists, setShopLists] = useState([])
+    const [shopLists, setShopLists] = useState(['Lista de Fevereiro/24'])
     const [listEditVisible, setListEditVisible] = useState(false)
 
     const toggleListEdit = () => {
         setListEditVisible((prev) => (!prev))
+    }
+
+    const addList = (listName) => {
+        let listValues = [...shopLists]
+        listValues.push(listName)
+        setShopLists(listValues)
+        toggleListEdit()
     }
 
     return (
@@ -24,9 +31,9 @@ export const ListsScreen = () => {
             <SafeAreaView style={styles.container}>
                 <Header />
                 <View style={styles.body}>
-                    <CardList />
-                    <CardList />
-                    <CardList />
+                    {shopLists.length > 0 && (shopLists.map((title, index)=>{
+                        return <CardList key={index} title={title} />
+                    }))}
                     { shopLists.length == 0 && (<Text style={styles.text}>
                         Nenhuma lista criada. {'\n'}Crie uma lista utilizando {'\n'}o botão “+” abaixo.
                     </Text>)}
@@ -41,7 +48,7 @@ export const ListsScreen = () => {
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                     >
-                        <ListEdit/>
+                        <ListEdit addList={addList}/>
                 </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>

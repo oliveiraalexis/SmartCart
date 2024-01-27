@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { View, TextInput, Text, StyleSheet } from 'react-native'
 import { Button } from '../Button/Button';
 
-export const ListEdit = () => {
+export const ListEdit = ({addList}) => {
 
     const [listName, setListName] = useState('');
 
@@ -18,7 +18,7 @@ export const ListEdit = () => {
                 />
             </View>
             <View style={styles.button}>
-                <Button iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
+                <Button onPress={() => addList(listName)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
                 <Button iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>
