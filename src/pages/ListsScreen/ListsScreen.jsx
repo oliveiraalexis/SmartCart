@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 import { Text, View, StyleSheet, SafeAreaView } from 'react-native'
 import { Header } from '../../components/Header/Header'
 import { Button } from '../../components/Button/Button'
@@ -12,6 +12,13 @@ export const ListsScreen = () => {
     const bottomSheetRef = useRef(null);
 	const snapPoints = useMemo(() => ['25%'], []);
 
+    const [shopLists, setShopLists] = useState([])
+    const [listEditVisible, setListEditVisible] = useState(false)
+
+    const toggleListEdit = () => {
+        setListEditVisible((prev) => (!prev))
+    }
+
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <SafeAreaView style={styles.container}>
@@ -20,12 +27,14 @@ export const ListsScreen = () => {
                     <CardList />
                     <CardList />
                     <CardList />
-                    <Text style={styles.text}>
+                    { shopLists.length == 0 && (<Text style={styles.text}>
                         Nenhuma lista criada. {'\n'}Crie uma lista utilizando {'\n'}o botão “+” abaixo.
-                    </Text>
-                    <Button iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
+                    </Text>)}
+                    <View style={{marginTop: 20}}>
+                        <Button onPress={toggleListEdit} margin iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
+                    </View>
                 </View>
-                <BottomSheet
+                {listEditVisible && (<BottomSheet
                     ref={bottomSheetRef}
                     index={0}
                     snapPoints={snapPoints}
@@ -33,7 +42,7 @@ export const ListsScreen = () => {
                     backgroundStyle={{backgroundColor: '#253153'}}
                     >
                         <ListEdit/>
-                </BottomSheet>
+                </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>
     )
@@ -55,7 +64,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 15,
         alignItems: 'center',
-        margin: 20,
+        marginTop: 20,
         textAlign: 'center'
     }
 })
