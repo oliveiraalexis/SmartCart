@@ -26,13 +26,18 @@ export const ListsScreen = () => {
         toggleListEdit()
     }
 
+    const deleteList = (listName) => {
+        let listValues  = [...shopLists].filter(item => item != listName)
+        setShopLists(listValues)
+    }
+
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <SafeAreaView style={styles.container}>
                 <Header />
                 <View style={styles.body}>
                     {shopLists.length > 0 && (shopLists.map((title, index)=>{
-                        return <CardList key={index} title={title} />
+                        return <CardList deleteList={() => deleteList(title)} key={index} title={title} />
                     }))}
                     { shopLists.length == 0 && (<Text style={styles.text}>
                         Nenhuma lista criada. {'\n'}Crie uma lista utilizando {'\n'}o botão “+” abaixo.

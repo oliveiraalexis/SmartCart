@@ -2,7 +2,7 @@ import React from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { Button } from '../Button/Button'
 
-export const CardList = ({title}) => {
+export const CardList = ({title, deleteList}) => {
 
     return (
         <Pressable style={styles.container}>
@@ -10,7 +10,7 @@ export const CardList = ({title}) => {
                     <Text style={styles.text}>{title}</Text>
                 </Pressable>
                 <Pressable style={styles.trash}>
-                    <Button  iconName='trash' bRadius={10} bBackgroundColor='#161E33' height={60}/>
+                    <Button onPress={deleteList}  iconName='trash' bRadius={10} bBackgroundColor='#161E33' height={60}/>
                 </Pressable>
         </Pressable>
     )
