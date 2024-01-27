@@ -12,7 +12,7 @@ export const ListsScreen = () => {
     const bottomSheetRef = useRef(null);
 	const snapPoints = useMemo(() => ['25%'], []);
 
-    const [shopLists, setShopLists] = useState(['Lista de Fevereiro/24'])
+    const [shopLists, setShopLists] = useState([])
     const [listEditVisible, setListEditVisible] = useState(false)
 
     const toggleListEdit = () => {
