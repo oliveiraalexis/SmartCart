@@ -5,7 +5,7 @@ import { ListDetailScreen } from './pages/ListDetailScreen/ListDetailScreen';
 const App = () => {
 
 	return (
-		<ListsScreen/>
+		<ListDetailScreen/>
 	);
 };
 

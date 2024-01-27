@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Platform } from 'react-native'
 import { Button } from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
 
-export const Product = () => {
+export const Product = ({nome, tipo, qtde, preco, toggleProductEdit}) => {
 
     const [isSelected, setSelection] = useState(false);
 
@@ -16,14 +16,14 @@ export const Product = () => {
             <View style={styles.viewtop}>
                 <View style={styles.viewleft}>                
                     <Checkbox value={isSelected} onValueChange={onValueChange}/>
-                    <Text style={styles.title}>Torrada Integral Adria</Text>
+                    <Text style={styles.title}>{nome}</Text>
                 </View>
                 <View style={styles.viewright}>
-                    <Button  iconName='pencil' bBackgroundColor='#161E33' />
+                    <Button onPress={toggleProductEdit} iconName='pencil' bBackgroundColor='#161E33' />
                 </View>
             </View>
-            <Text style={styles.text}>Quantidade: 1un</Text>
-            <Text style={styles.text}>Preço Total: R$ 9,99</Text>
+            <Text style={styles.text}>Quantidade: {qtde} {tipo}</Text>
+            <Text style={styles.text}>Preço Total: {parseFloat(qtde) * parseFloat(preco)}</Text>
         </View>
     )
 }

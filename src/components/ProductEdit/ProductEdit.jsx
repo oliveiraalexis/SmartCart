@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TextInput } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Button } from '../Button/Button';
 
-export const ProductEdit = () => {
+export const ProductEdit = ({addProduct, toggleProductEdit}) => {
 
     const [qtde, setQtde] = useState(1);
     const [preco, setPreco] = useState(0.00);
@@ -75,8 +75,8 @@ export const ProductEdit = () => {
                 </View>
             </View>
             <View style={styles.button}>
-                <Button iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
-                <Button iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
+                <Button onPress={() => addProduct()} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
+                <Button onPress={() => toggleProductEdit()} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>
     )
