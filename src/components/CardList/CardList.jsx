@@ -2,12 +2,12 @@ import React from 'react'
 import { View, Text, StyleSheet, Pressable } from 'react-native'
 import { Button } from '../Button/Button'
 
-export const CardList = () => {
+export const CardList = ({title}) => {
 
     return (
         <Pressable style={styles.container}>
                 <Pressable style={styles.buttonList}>
-                    <Text style={styles.text}>Lista de compras de AGO/2023</Text>
+                    <Text style={styles.text}>{title}</Text>
                 </Pressable>
                 <Pressable style={styles.trash}>
                     <Button  iconName='trash' bRadius={10} bBackgroundColor='#161E33' height={60}/>
