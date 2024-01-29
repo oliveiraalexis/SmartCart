@@ -27,7 +27,6 @@ export const ListDetailScreen = () => {
     const addProduct = (product) => {
         setProdutos([...produtos, {...product}])
         setProductEditVisible((prev) => (!prev))
-        console.log(produtos)
     }
 
     return (
