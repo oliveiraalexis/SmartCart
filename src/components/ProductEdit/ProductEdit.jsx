@@ -76,7 +76,7 @@ export const ProductEdit = ({nome = '', tipo = 'un', qtde = '1', preco = '0.00',
                 </View>
             </View>
             <View style={styles.button}>
-                <Button onPress={addProduct} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
+                <Button onPress={() => addProduct({nome: nomeProduto, tipo: value, qtde: parseInt(qtdeProduto), preco: parseFloat(precoProduto)})} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
                 <Button onPress={toggleProductEdit} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>

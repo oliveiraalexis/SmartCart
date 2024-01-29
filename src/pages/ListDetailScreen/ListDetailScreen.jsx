@@ -16,33 +16,18 @@ export const ListDetailScreen = () => {
 
     const [productEditVisible, setProductEditVisible] = useState(false)
     const [productEdit, setProductEdit] = useState({})
+    
     const [produtos, setProdutos] = useState([])
-
-    let prod = [
-        {
-            nome: 'Torrada Integral Adria',
-            tipo: 'un',
-            qtde: 2,
-            preco: 5.99
-        },
-        {
-            nome: 'Carne moída',
-            tipo: 'kg',
-            qtde: 1,
-            preco: 19.86
-        }
-    ]
 
     const toggleProductEdit = (product = {}) => {
         setProductEdit(product)
         setProductEditVisible((prev) => (!prev))
     }
 
-    const addProduct = (listName) => {
-        // let listValues = [...shopLists]
-        // listValues.push(listName)
-        // setShopLists(listValues)
-        // toggleListEdit()
+    const addProduct = (product) => {
+        setProdutos([...produtos, {...product}])
+        setProductEditVisible((prev) => (!prev))
+        console.log(produtos)
     }
 
     return (
@@ -50,20 +35,20 @@ export const ListDetailScreen = () => {
             <SafeAreaView style={styles.container}>
                 <Header />
                 <View style={styles.body}>
-                    <View style={styles.products}>
+                   { produtos.length > 0 && ( <View style={styles.products}>
                         <FlatList
                             data={
                                 [
-                                    prod.length > 0 && (prod.map((p, index)=>{
+                                    produtos.map((p, index)=>{
                                         return <Product {...p} toggleProductEdit={() => toggleProductEdit(p)} key={index}/>
-                                    }))
+                                    })
                                 ]
                             }
                             renderItem={({item}) => item}
                         >
                         </FlatList>
-                    </View>
-                    { prod.length == 0 && (<Text style={styles.text}>
+                    </View>)}
+                    { produtos.length == 0 && (<Text style={styles.text}>
                         Nenhum produto na lista. {'\n'}Inclua um produto utilizando {'\n'}o botão “+” abaixo.
                     </Text>)}
                     <View style={{alignItems: 'center', marginTop: 20}}>
