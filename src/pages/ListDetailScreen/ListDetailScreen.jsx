@@ -25,7 +25,8 @@ export const ListDetailScreen = () => {
     }
 
     const addProduct = (product) => {
-        setProdutos([...produtos, {...product}])
+        const edicao = Object.keys(productEdit).includes("nome", "tipo", "qtde", "preco") //Se for 'true' significa que o método está sendo chamado a partir do botão de edição de produto, logo não deve adicionar o produto de novo
+        if (!edicao) setProdutos([...produtos, {...product}])
         setProductEditVisible((prev) => (!prev))
     }
 
