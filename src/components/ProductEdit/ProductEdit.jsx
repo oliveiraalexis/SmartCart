@@ -3,13 +3,14 @@ import { View, Text, StyleSheet, TextInput } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Button } from '../Button/Button';
 
-export const ProductEdit = ({addProduct, toggleProductEdit}) => {
+export const ProductEdit = ({nome = '', tipo = 'un', qtde = '1', preco = '0.00', addProduct, toggleProductEdit}) => {
 
-    const [qtde, setQtde] = useState(1);
-    const [preco, setPreco] = useState(0.00);
+    const [nomeProduto, setNome] = useState(nome);
+    const [qtdeProduto, setQtde] = useState(qtde.toString());
+    const [precoProduto, setPreco] = useState(preco.toString());
 
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState('un');
+    const [value, setValue] = useState(tipo);
     const [items, setItems] = useState([
         {label: 'Kg', value: 'kg'},
         {label: 'Un', value: 'un'}
@@ -22,9 +23,9 @@ export const ProductEdit = ({addProduct, toggleProductEdit}) => {
                     <Text style={styles.text}>Produto:</Text>
                     <TextInput
                         style={styles.input}
-                        onChangeText={setQtde}
-                        value={'Carne moída'}
-                        defaultValue='Carne moída'
+                        onChangeText={setNome}
+                        value={nomeProduto}
+                        defaultValue={nomeProduto}
                     />
                 </View>
                 <View>
@@ -58,8 +59,8 @@ export const ProductEdit = ({addProduct, toggleProductEdit}) => {
                     <TextInput
                         style={styles.inputNumber}
                         onChangeText={setQtde}
-                        value={qtde}
-                        defaultValue='1'
+                        value={qtdeProduto}
+                        defaultValue={qtdeProduto}
                         keyboardType="numeric"
                     />
                 </View>
@@ -68,15 +69,15 @@ export const ProductEdit = ({addProduct, toggleProductEdit}) => {
                     <TextInput
                         style={styles.inputNumber}
                         onChangeText={setPreco}
-                        value={preco}
-                        defaultValue="0,00"
+                        value={precoProduto}
+                        defaultValue={precoProduto}
                         keyboardType="numeric"
                     />
                 </View>
             </View>
             <View style={styles.button}>
-                <Button onPress={() => addProduct()} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
-                <Button onPress={() => toggleProductEdit()} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
+                <Button onPress={addProduct} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
+                <Button onPress={toggleProductEdit} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>
     )

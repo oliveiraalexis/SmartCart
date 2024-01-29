@@ -15,6 +15,7 @@ export const ListDetailScreen = () => {
 	const snapPoints = useMemo(() => ['55%'], []);
 
     const [productEditVisible, setProductEditVisible] = useState(false)
+    const [productEdit, setProductEdit] = useState({})
     const [produtos, setProdutos] = useState([])
 
     let prod = [
@@ -32,7 +33,8 @@ export const ListDetailScreen = () => {
         }
     ]
 
-    const toggleProductEdit = () => {
+    const toggleProductEdit = (product = {}) => {
+        setProductEdit(product)
         setProductEditVisible((prev) => (!prev))
     }
 
@@ -53,7 +55,7 @@ export const ListDetailScreen = () => {
                             data={
                                 [
                                     prod.length > 0 && (prod.map((p, index)=>{
-                                        return <Product {...p} toggleProductEdit={toggleProductEdit} key={index}/>
+                                        return <Product {...p} toggleProductEdit={() => toggleProductEdit(p)} key={index}/>
                                     }))
                                 ]
                             }
@@ -65,7 +67,7 @@ export const ListDetailScreen = () => {
                         Nenhum produto na lista. {'\n'}Inclua um produto utilizando {'\n'}o botão “+” abaixo.
                     </Text>)}
                     <View style={{alignItems: 'center', marginTop: 20}}>
-                        <Button onPress={toggleProductEdit} margin iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
+                        <Button onPress={toggleProductEdit} iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
                     </View>
                 </View>
                 <Footer />
@@ -76,7 +78,7 @@ export const ListDetailScreen = () => {
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                 >
-                    <ProductEdit addProduct={addProduct} toggleProductEdit={toggleProductEdit}/>
+                    <ProductEdit addProduct={addProduct} toggleProductEdit={toggleProductEdit} {...productEdit}/>
 			    </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>
