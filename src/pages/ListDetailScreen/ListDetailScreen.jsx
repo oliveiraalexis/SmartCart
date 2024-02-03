@@ -12,7 +12,7 @@ import { ProductEdit } from '../../components/ProductEdit/ProductEdit'
 export const ListDetailScreen = () => {
 
     const bottomSheetRef = useRef(null);
-	const snapPoints = useMemo(() => ['55%'], []);
+	const snapPoints = useMemo(() => ['70%'], []);
 
     const [productEditVisible, setProductEditVisible] = useState(false)
     const [productEdit, setProductEdit] = useState({})
