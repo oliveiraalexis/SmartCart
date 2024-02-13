@@ -6,13 +6,16 @@ import { CardList } from '../../components/CardList/CardList'
 import { ListEdit } from '../../components/ListEdit/ListEdit'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import BottomSheet from '@gorhom/bottom-sheet'
+import { search, save } from '../../services/Storage'
 
 export const ListsScreen = () => {
 
     const bottomSheetRef = useRef(null);
-	const snapPoints = useMemo(() => ['25%'], []);
+	const snapPoints = useMemo(() => ['30%'], []);
 
-    const [shopLists, setShopLists] = useState([])
+    const ListsStorage = search('Lists')
+
+    const [shopLists, setShopLists] = useState(ListsStorage || [])
     const [listEditVisible, setListEditVisible] = useState(false)
 
     const toggleListEdit = () => {
@@ -22,12 +25,14 @@ export const ListsScreen = () => {
     const addList = (listName) => {
         let listValues = [...shopLists]
         listValues.push(listName)
+        save('Lists', listValues)
         setShopLists(listValues)
         toggleListEdit()
     }
 
     const deleteList = (listName) => {
         let listValues  = [...shopLists].filter(item => item != listName)
+        save('Lists', listValues)
         setShopLists(listValues)
     }
 
