@@ -4,7 +4,7 @@ import { Header } from '../../components/Header/Header'
 import { Button } from '../../components/Button/Button'
 import { CardList } from '../../components/CardList/CardList'
 import { ListEdit } from '../../components/ListEdit/ListEdit'
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { search, save } from '../../services/Storage'
 
