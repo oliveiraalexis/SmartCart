@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-	SafeAreaView,
-	StyleSheet,
-	Text
-} from 'react-native';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export const Header = () => {

@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { Platform } from 'react-native'
 import RNCheckBox from '@react-native-community/checkbox'
 
