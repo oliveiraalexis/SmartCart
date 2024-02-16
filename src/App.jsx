@@ -1,11 +1,10 @@
 import React from 'react';
-import { ListsScreen } from './pages/ListsScreen/ListsScreen';
-import { ListDetailScreen } from './pages/ListDetailScreen/ListDetailScreen';
+import { Routes } from './routes/Routes';
 
 const App = () => {
 
 	return (
-		<ListsScreen/>
+		<Routes/>
 	);
 };
 
