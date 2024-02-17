@@ -2,12 +2,12 @@ import React from 'react';
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-export const Header = () => {
+export const Header = ({title}) => {
 
 	return (
 		<SafeAreaView style={styles.Container}>
 			<Icon name="shopping-cart" size={25} color="#FFFFFF" />
-			<Text style={styles.text}>LISTAS DE COMPRAS</Text>
+			<Text style={styles.text}>{title}</Text>
 		</SafeAreaView>
 	);
 };

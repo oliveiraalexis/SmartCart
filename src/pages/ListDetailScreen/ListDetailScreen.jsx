@@ -9,7 +9,9 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { ProductEdit } from '../../components/ProductEdit/ProductEdit'
 
-export const ListDetailScreen = () => {
+export const ListDetailScreen = ({route}) => {
+
+    const title = route.params.title
 
     const bottomSheetRef = useRef(null);
 	const snapPoints = useMemo(() => ['70%'], []);
@@ -33,7 +35,7 @@ export const ListDetailScreen = () => {
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <SafeAreaView style={styles.container}>
-                <Header />
+                <Header title={title}/>
                 <View style={styles.body}>
                    { produtos.length > 0 && ( <View style={styles.products}>
                         <FlatList
