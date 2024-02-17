@@ -9,7 +9,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { ProductEdit } from '../../components/ProductEdit/ProductEdit'
 
-export const ListDetailScreen = ({route}) => {
+export const ListDetailScreen = ({route, navigation}) => {
 
     const title = route.params.title
 
@@ -26,6 +26,10 @@ export const ListDetailScreen = ({route}) => {
         setProductEditVisible((prev) => (!prev))
     }
 
+    const navigationToListsScreen = () => {
+        navigation.goBack()
+    }
+
     const addProduct = (product) => {
         const edicao = Object.keys(productEdit).includes("nome", "tipo", "qtde", "preco") //Se for 'true' significa que o método está sendo chamado a partir do botão de edição de produto, logo não deve adicionar o produto de novo
         if (!edicao) setProdutos([...produtos, {...product}])
@@ -35,7 +39,7 @@ export const ListDetailScreen = ({route}) => {
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <SafeAreaView style={styles.container}>
-                <Header title={title}/>
+                <Header goBack={navigationToListsScreen} title={title}/>
                 <View style={styles.body}>
                    { produtos.length > 0 && ( <View style={styles.products}>
                         <FlatList
