@@ -8,7 +8,7 @@ import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { search, save } from '../../services/Storage'
 
-export const ListsScreen = () => {
+export const ListsScreen = ({navigation}) => {
 
     const bottomSheetRef = useRef(null);
 	const snapPoints = useMemo(() => ['30%'], []);
@@ -20,6 +20,10 @@ export const ListsScreen = () => {
 
     const toggleListEdit = () => {
         setListEditVisible((prev) => (!prev))
+    }
+
+    const navigationToDetailScreen = (title) => {
+        navigation.navigate('ListDetailScreen', {title})
     }
 
     const addList = (listName) => {
@@ -39,10 +43,10 @@ export const ListsScreen = () => {
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <SafeAreaView style={styles.container}>
-                <Header />
+                <Header title='LISTAS DE COMPRAS'/>
                 <View style={styles.body}>
                     {shopLists.length > 0 && (shopLists.map((title, index)=>{
-                        return <CardList deleteList={() => deleteList(title)} key={index} title={title} />
+                        return <CardList onPress={() => navigationToDetailScreen(title)} deleteList={() => deleteList(title)} key={index} title={title} />
                     }))}
                     { shopLists.length == 0 && (<Text style={styles.text}>
                         Nenhuma lista criada. {'\n'}Crie uma lista utilizando {'\n'}o botão “+” abaixo.

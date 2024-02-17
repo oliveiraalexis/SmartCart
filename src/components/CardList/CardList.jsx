@@ -2,11 +2,11 @@ import React from 'react'
 import { Text, StyleSheet, Pressable } from 'react-native'
 import { Button } from '../Button/Button'
 
-export const CardList = ({title, deleteList}) => {
+export const CardList = ({title, onPress, deleteList}) => {
 
     return (
         <Pressable style={styles.container}>
-                <Pressable style={styles.buttonList}>
+                <Pressable onPress={onPress} style={styles.buttonList}>
                     <Text style={styles.text}>{title}</Text>
                 </Pressable>
                 <Pressable style={styles.trash}>
