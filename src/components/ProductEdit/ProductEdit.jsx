@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
-import DropDownPicker from 'react-native-dropdown-picker';
-import { Button } from '../Button/Button';
+import DropDownPicker from 'react-native-dropdown-picker'
+import { Button } from '../Button/Button'
 
 export const ProductEdit = ({nome = '', tipo = 'un', qtde = '1', preco = '0.00', addProduct, toggleProductEdit}) => {
 

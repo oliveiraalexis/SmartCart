@@ -1,7 +1,7 @@
 import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Button } from '../Button/Button';
+import { SafeAreaView, StyleSheet, Text, View } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
+import { Button } from '../Button/Button'
 
 export const Header = ({goBack, title}) => {
 
