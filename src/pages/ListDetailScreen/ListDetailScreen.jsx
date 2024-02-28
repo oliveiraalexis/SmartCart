@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useRef } from 'react'
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, Modal } from 'react-native'
+import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
 import { Header } from '../../components/Header/Header'
 import { Footer } from '../../components/Footer/Footer'
 import { FlatList } from 'react-native'
@@ -8,6 +8,7 @@ import { Product } from '../../components/Product/Product'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { ProductEdit } from '../../components/ProductEdit/ProductEdit'
+import { search, save } from '../../services/Storage'
 
 export const ListDetailScreen = ({route, navigation}) => {
 
@@ -15,11 +16,12 @@ export const ListDetailScreen = ({route, navigation}) => {
 
     const bottomSheetRef = useRef(null);
 	const snapPoints = useMemo(() => ['70%'], []);
-
+    
     const [productEditVisible, setProductEditVisible] = useState(false)
     const [productEdit, setProductEdit] = useState({})
     
-    const [produtos, setProdutos] = useState([])
+    const productsStorage = search(title)
+    const [produtos, setProdutos] = useState(productsStorage || [])
 
     const toggleProductEdit = (product = {}) => {
         setProductEdit(product)
@@ -32,7 +34,11 @@ export const ListDetailScreen = ({route, navigation}) => {
 
     const addProduct = (product) => {
         const edicao = Object.keys(productEdit).includes("nome", "tipo", "qtde", "preco") //Se for 'true' significa que o método está sendo chamado a partir do botão de edição de produto, logo não deve adicionar o produto de novo
-        if (!edicao) setProdutos([...produtos, {...product}])
+        if (!edicao) {
+            const newProductArray = [...produtos, {...product}]
+            setProdutos(newProductArray)
+            save(title, newProductArray)
+        }
         setProductEditVisible((prev) => (!prev))
     }
 
@@ -69,7 +75,7 @@ export const ListDetailScreen = ({route, navigation}) => {
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                 >
-                    <ProductEdit addProduct={addProduct} toggleProductEdit={toggleProductEdit} {...productEdit}/>
+                    <ProductEdit {...productEdit} addProduct={addProduct} toggleProductEdit={toggleProductEdit}/>
 			    </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>
