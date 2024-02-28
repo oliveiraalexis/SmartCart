@@ -7,7 +7,7 @@ import { Button } from '../../components/Button/Button'
 import { Product } from '../../components/Product/Product'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import BottomSheet from '@gorhom/bottom-sheet'
-import { ProductEdit } from '../../components/ProductEdit/ProductEdit'
+import { ProductForm } from '../../components/ProductForm/ProductForm'
 import { search, save } from '../../services/Storage'
 
 export const ListDetailScreen = ({route, navigation}) => {
@@ -17,15 +17,15 @@ export const ListDetailScreen = ({route, navigation}) => {
     const bottomSheetRef = useRef(null);
 	const snapPoints = useMemo(() => ['70%'], []);
     
-    const [productEditVisible, setProductEditVisible] = useState(false)
-    const [productEdit, setProductEdit] = useState({})
+    const [productFormVisible, setProductFormVisible] = useState(false)
+    const [productForm, setProductForm] = useState({})
     
     const productsStorage = search(title)
     const [produtos, setProdutos] = useState(productsStorage || [])
 
-    const toggleProductEdit = (product = {}) => {
-        setProductEdit(product)
-        setProductEditVisible((prev) => (!prev))
+    const toggleProductForm = (product = {}) => {
+        setProductForm(product)
+        setProductFormVisible((prev) => (!prev))
     }
 
     const navigationToListsScreen = () => {
@@ -33,13 +33,13 @@ export const ListDetailScreen = ({route, navigation}) => {
     }
 
     const addProduct = (product) => {
-        const edicao = Object.keys(productEdit).includes("nome", "tipo", "qtde", "preco") //Se for 'true' significa que o método está sendo chamado a partir do botão de edição de produto, logo não deve adicionar o produto de novo
+        const edicao = Object.keys(productForm).includes("nome", "tipo", "qtde", "preco") //Se for 'true' significa que o método está sendo chamado a partir do botão de edição de produto, logo não deve adicionar o produto de novo
         if (!edicao) {
             const newProductArray = [...produtos, {...product}]
             setProdutos(newProductArray)
             save(title, newProductArray)
         }
-        setProductEditVisible((prev) => (!prev))
+        setProductFormVisible((prev) => (!prev))
     }
 
     return (
@@ -52,7 +52,7 @@ export const ListDetailScreen = ({route, navigation}) => {
                             data={
                                 [
                                     produtos.map((p, index)=>{
-                                        return <Product {...p} toggleProductEdit={() => toggleProductEdit(p)} key={index}/>
+                                        return <Product {...p} toggleProductForm={() => toggleProductForm(p)} key={index}/>
                                     })
                                 ]
                             }
@@ -64,18 +64,18 @@ export const ListDetailScreen = ({route, navigation}) => {
                         Nenhum produto na lista. {'\n'}Inclua um produto utilizando {'\n'}o botão “+” abaixo.
                     </Text>)}
                     <View style={{alignItems: 'center', marginTop: 20}}>
-                        <Button onPress={toggleProductEdit} iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
+                        <Button onPress={toggleProductForm} iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
                     </View>
                 </View>
                 <Footer />
-                {productEditVisible && (<BottomSheet
+                {productFormVisible && (<BottomSheet
                     ref={bottomSheetRef}
                     index={0}
                     snapPoints={snapPoints}
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                 >
-                    <ProductEdit {...productEdit} addProduct={addProduct} toggleProductEdit={toggleProductEdit}/>
+                    <ProductForm {...productForm} addProduct={addProduct} toggleProductForm={toggleProductForm}/>
 			    </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>

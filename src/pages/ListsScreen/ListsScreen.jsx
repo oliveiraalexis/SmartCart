@@ -3,7 +3,7 @@ import { Text, View, StyleSheet, SafeAreaView } from 'react-native'
 import { Header } from '../../components/Header/Header'
 import { Button } from '../../components/Button/Button'
 import { CardList } from '../../components/CardList/CardList'
-import { ListEdit } from '../../components/ListEdit/ListEdit'
+import { ListForm } from '../../components/ListForm/ListForm'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { search, save } from '../../services/Storage'
@@ -16,10 +16,10 @@ export const ListsScreen = ({navigation}) => {
     const ListsStorage = search('Lists')
 
     const [shopLists, setShopLists] = useState(ListsStorage || [])
-    const [listEditVisible, setListEditVisible] = useState(false)
+    const [ListFormVisible, setListFormVisible] = useState(false)
 
-    const toggleListEdit = () => {
-        setListEditVisible((prev) => (!prev))
+    const toggleListForm = () => {
+        setListFormVisible((prev) => (!prev))
     }
 
     const navigationToDetailScreen = (title) => {
@@ -31,7 +31,7 @@ export const ListsScreen = ({navigation}) => {
         listValues.push(listName)
         save('Lists', listValues)
         setShopLists(listValues)
-        toggleListEdit()
+        toggleListForm()
     }
 
     const deleteList = (listName) => {
@@ -52,17 +52,17 @@ export const ListsScreen = ({navigation}) => {
                         Nenhuma lista criada. {'\n'}Crie uma lista utilizando {'\n'}o botão “+” abaixo.
                     </Text>)}
                     <View style={{marginTop: 20}}>
-                        <Button onPress={toggleListEdit} margin iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
+                        <Button onPress={toggleListForm} margin iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
                     </View>
                 </View>
-                {listEditVisible && (<BottomSheet
+                {ListFormVisible && (<BottomSheet
                     ref={bottomSheetRef}
                     index={0}
                     snapPoints={snapPoints}
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                     >
-                        <ListEdit addList={addList} toggleListEdit={toggleListEdit}/>
+                        <ListForm addList={addList} toggleListForm={toggleListForm}/>
                 </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>

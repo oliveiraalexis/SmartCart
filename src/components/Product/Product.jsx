@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { Button } from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
 
-export const Product = ({nome, tipo, qtde, preco, toggleProductEdit}) => {
+export const Product = ({nome, tipo, qtde, preco, toggleProductForm}) => {
 
     const [isSelected, setSelection] = useState(false);
 
@@ -19,7 +19,7 @@ export const Product = ({nome, tipo, qtde, preco, toggleProductEdit}) => {
                     <Text style={styles.title}>{nome}</Text>
                 </View>
                 <View style={styles.viewright}>
-                    <Button onPress={toggleProductEdit} iconName='pencil' bBackgroundColor='#161E33' />
+                    <Button onPress={toggleProductForm} iconName='pencil' bBackgroundColor='#161E33' />
                 </View>
             </View>
             <Text style={styles.text}>Quantidade: {qtde} {tipo}</Text>
