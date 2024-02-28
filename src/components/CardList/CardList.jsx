@@ -10,7 +10,8 @@ export const CardList = ({title, onPress, deleteList}) => {
                     <Text style={styles.text}>{title}</Text>
                 </Pressable>
                 <Pressable style={styles.trash}>
-                    <Button onPress={deleteList}  iconName='trash' bRadius={10} bBackgroundColor='#161E33' height={60}/>
+                    <Button onPress={deleteList}  iconName='trash' bRadius={10} bBackgroundColor='#161E33' height={28} size={15}/>
+                    <Button onPress={deleteList}  iconName='pencil' bRadius={10} bBackgroundColor='#161E33' height={28} size={15}/>
                 </Pressable>
         </Pressable>
     )
@@ -19,7 +20,7 @@ export const CardList = ({title, onPress, deleteList}) => {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: 60,
+        height: 70,
         backgroundColor: '#161E33',
         borderRadius: 10,
         marginTop: 20,
@@ -29,14 +30,16 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight: 'bold',
         fontSize: 15,
-        margin: 20
+        marginHorizontal: 20
         
     },
     buttonList: {
-        flex: 5,
-        borderRadius: 10
+        flex: 7,
+        borderRadius: 10,
+        alignSelf: 'center'
     },
     trash:{
-        flex: 1
+        flex: 1,
+        alignSelf: 'center'
     }
 })
