@@ -43,7 +43,7 @@ export const ListsScreen = ({navigation}) => {
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <SafeAreaView style={styles.container}>
-                <Header title='LISTAS DE COMPRAS'/>
+                <Header title='SMARTCART'/>
                 <View style={styles.body}>
                     {shopLists.length > 0 && (shopLists.map((title, index)=>{
                         return <CardList onPress={() => navigationToDetailScreen(title)} deleteList={() => deleteList(title)} key={index} title={title} />
