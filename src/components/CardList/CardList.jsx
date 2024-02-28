@@ -11,7 +11,7 @@ export const CardList = ({title, onPress, deleteList}) => {
                 </Pressable>
                 <Pressable style={styles.trash}>
                     <Button onPress={deleteList}  iconName='trash' bRadius={10} bBackgroundColor='#161E33' height={28} size={15}/>
-                    <Button onPress={deleteList}  iconName='pencil' bRadius={10} bBackgroundColor='#161E33' height={28} size={15}/>
+                    <Button onPress={null}  iconName='pencil' bRadius={10} bBackgroundColor='#161E33' height={28} size={15}/>
                 </Pressable>
         </Pressable>
     )
