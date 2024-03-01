@@ -81,7 +81,7 @@ export const ProductForm = ({listName, productForm, addProduct, editProduct, tog
             </View>
             <View style={styles.button}>
                 <Button onPress={!edicao ? () => addProduct(newProduct) : () => editProduct(listName, productForm, newProduct)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
-                <Button onPress={toggleProductForm} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
+                <Button onPress={() => toggleProductForm()} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>
     )

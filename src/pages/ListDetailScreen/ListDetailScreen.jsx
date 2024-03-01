@@ -77,7 +77,7 @@ export const ListDetailScreen = ({route, navigation}) => {
                         Nenhum produto na lista. {'\n'}Inclua um produto utilizando {'\n'}o botão “+” abaixo.
                     </Text>)}
                     <View style={{alignItems: 'center', marginTop: 20}}>
-                        <Button onPress={toggleProductForm} iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
+                        <Button onPress={() => toggleProductForm()} iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
                     </View>
                 </View>
                 <Footer />

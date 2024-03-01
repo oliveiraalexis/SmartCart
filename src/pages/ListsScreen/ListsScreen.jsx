@@ -18,7 +18,6 @@ export const ListsScreen = ({navigation}) => {
     const [shopLists, setShopLists] = useState(ListsStorage || [])
     const [ListFormVisible, setListFormVisible] = useState(false)
     const [listForm, setListForm] = useState('')
-    console.log('listForma ao iniciar', typeof(listForm))
 
     const toggleListForm = (title = '') => {
         setListForm(title)
@@ -64,7 +63,7 @@ export const ListsScreen = ({navigation}) => {
                         Nenhuma lista criada. {'\n'}Crie uma lista utilizando {'\n'}o botão “+” abaixo.
                     </Text>)}
                     <View style={{marginTop: 20}}>
-                        <Button onPress={toggleListForm} margin iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
+                        <Button onPress={() => toggleListForm()} margin iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
                     </View>
                 </View>
                 {ListFormVisible && (<BottomSheet
