@@ -3,14 +3,14 @@ import { Text, StyleSheet, Pressable } from 'react-native'
 import { Button } from '../Button/Button'
 
 export const CardList = ({title, onPress, deleteList, toggleListForm}) => {
-
+    console.log('ao renderizar carlist ', typeof(title))
     return (
         <Pressable style={styles.container}>
-                <Pressable onPress={onPress} style={styles.buttonList}>
+                <Pressable onPress={() => onPress(title)} style={styles.buttonList}>
                     <Text style={styles.text}>{title}</Text>
                 </Pressable>
                 <Pressable style={styles.trash}>
-                    <Button onPress={deleteList}  iconName='trash' bRadius={10} bBackgroundColor='#161E33' height={28} size={15}/>
+                    <Button onPress={() => deleteList(title)}  iconName='trash' bRadius={10} bBackgroundColor='#161E33' height={28} size={15}/>
                     <Button onPress={toggleListForm}  iconName='pencil' bRadius={10} bBackgroundColor='#161E33' height={28} size={15}/>
                 </Pressable>
         </Pressable>

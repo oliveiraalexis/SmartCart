@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import { View, TextInput, Text, StyleSheet } from 'react-native'
 import { Button } from '../Button/Button';
 
-export const ListForm = ({listForm = '', addList, editList, toggleListForm}) => {
+export const ListForm = ({listForm, addList, editList, toggleListForm}) => {
 
     const [listName, setListName] = useState(listForm);
 

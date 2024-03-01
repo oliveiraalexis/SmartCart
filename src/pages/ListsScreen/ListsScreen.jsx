@@ -18,10 +18,10 @@ export const ListsScreen = ({navigation}) => {
     const [shopLists, setShopLists] = useState(ListsStorage || [])
     const [ListFormVisible, setListFormVisible] = useState(false)
     const [listForm, setListForm] = useState('')
+    console.log('listForma ao iniciar', typeof(listForm))
 
     const toggleListForm = (title = '') => {
-    
-        if (title != '') setListForm(title)
+        setListForm(title)
         setListFormVisible((prev) => (!prev))
     }
 
@@ -58,7 +58,7 @@ export const ListsScreen = ({navigation}) => {
                 <Header title='SMARTCART'/>
                 <View style={styles.body}>
                     {shopLists.length > 0 && (shopLists.map((title, index)=>{
-                        return <CardList onPress={() => navigationToDetailScreen(title)} deleteList={() => deleteList(title)} toggleListForm={() => toggleListForm(title)} key={index} title={title} />
+                        return <CardList title={title} onPress={navigationToDetailScreen} deleteList={deleteList} toggleListForm={() => toggleListForm(title)} key={index} />
                     }))}
                     { shopLists.length == 0 && (<Text style={styles.text}>
                         Nenhuma lista criada. {'\n'}Crie uma lista utilizando {'\n'}o botão “+” abaixo.
