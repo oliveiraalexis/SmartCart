@@ -39,7 +39,8 @@ export const ListsScreen = ({navigation}) => {
 
     const editList = (listName, newListName) => {
         let listValues = [...shopLists]
-        listValues.push(listName)
+        const index = listValues.indexOf(listName)
+        listValues[index] = newListName
         save('Lists', listValues)
         setShopLists(listValues)
         toggleListForm()
@@ -73,7 +74,7 @@ export const ListsScreen = ({navigation}) => {
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                     >
-                        <ListForm listForm={listForm} addList={addList} toggleListForm={toggleListForm}/>
+                        <ListForm listForm={listForm} addList={addList} editList={editList} toggleListForm={toggleListForm}/>
                 </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>
