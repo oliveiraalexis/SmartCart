@@ -3,7 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { Button } from '../Button/Button';
 import { Checkbox } from '../Checkbox/Checkbox';
 
-export const Product = ({nome, tipo, qtde, preco, toggleProductForm}) => {
+export const Product = ({product, toggleProductForm, deleteProduct}) => {
 
     const [isSelected, setSelection] = useState(false);
 
@@ -16,13 +16,13 @@ export const Product = ({nome, tipo, qtde, preco, toggleProductForm}) => {
                 <View style={styles.viewleft}>                
                     <View style={styles.viewtop}>
                         <Checkbox value={isSelected} onValueChange={onValueChange}/>
-                        <Text style={styles.title}>{nome}</Text>
+                        <Text style={styles.title}>{product.nome}</Text>
                     </View>
-                    <Text style={styles.text}>Quantidade: {qtde} {tipo}</Text>
-                    <Text style={styles.text}>Preço Total: {parseFloat(qtde) * parseFloat(preco)}</Text>
+                    <Text style={styles.text}>Quantidade: {product.qtde} {product.tipo}</Text>
+                    <Text style={styles.text}>Preço Total: {parseFloat(product.qtde) * parseFloat(product.preco)}</Text>
                 </View>
                 <View style={styles.viewright}>
-                    <Button onPress={null} iconName='trash' bBackgroundColor='#161E33' size={15}/>
+                    <Button onPress={() => deleteProduct(product)} iconName='trash' bBackgroundColor='#161E33' size={15}/>
                     <Button onPress={toggleProductForm} iconName='pencil' bBackgroundColor='#161E33' size={15}/>
                 </View>
         </View>

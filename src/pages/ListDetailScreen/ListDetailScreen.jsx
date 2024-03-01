@@ -49,6 +49,12 @@ export const ListDetailScreen = ({route, navigation}) => {
         setProductFormVisible((prev) => (!prev))
     }
 
+    const deleteProduct = (product) => {
+        const newProductArray = [...produtos].filter(item => item != product)
+        setProdutos(newProductArray)
+        save(title, newProductArray)
+    }
+
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <SafeAreaView style={styles.container}>
@@ -59,7 +65,7 @@ export const ListDetailScreen = ({route, navigation}) => {
                             data={
                                 [
                                     produtos.map((p, index)=>{
-                                        return <Product {...p} toggleProductForm={() => toggleProductForm(p)} key={index}/>
+                                        return <Product product={p} toggleProductForm={() => toggleProductForm(p)} deleteProduct={deleteProduct} key={index}/>
                                     })
                                 ]
                             }
