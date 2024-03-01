@@ -3,18 +3,22 @@ import { View, Text, StyleSheet, TextInput } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
 import { Button } from '../Button/Button'
 
-export const ProductForm = ({nome = '', tipo = 'un', qtde = '1', preco = '0.00', addProduct, toggleProductForm}) => {
+export const ProductForm = ({listName, productForm, addProduct, editProduct, toggleProductForm}) => {
 
-    const [nomeProduto, setNome] = useState(nome);
-    const [qtdeProduto, setQtde] = useState(qtde.toString());
-    const [precoProduto, setPreco] = useState(preco.toString());
+    const edicao = Object.keys(productForm).includes("nome", "tipo", "qtde", "preco")
+
+    const [nomeProduto, setNome] = useState(edicao ? productForm.nome : '');
+    const [qtdeProduto, setQtde] = useState(edicao ? productForm.qtde.toString() : '1');
+    const [precoProduto, setPreco] = useState(edicao ? productForm.preco.toString() : '0.00');
 
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(tipo);
+    const [value, setValue] = useState(edicao ? productForm.tipo : 'un');
     const [items, setItems] = useState([
         {label: 'Kg', value: 'kg'},
         {label: 'Un', value: 'un'}
     ]);
+
+    let newProduct = {nome: nomeProduto, tipo: value, qtde: parseInt(qtdeProduto), preco: parseFloat(precoProduto)}
 
     return (
         <View style={styles.container}>
@@ -76,7 +80,7 @@ export const ProductForm = ({nome = '', tipo = 'un', qtde = '1', preco = '0.00',
                 </View>
             </View>
             <View style={styles.button}>
-                <Button onPress={() => addProduct({nome: nomeProduto, tipo: value, qtde: parseInt(qtdeProduto), preco: parseFloat(precoProduto)})} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
+                <Button onPress={!edicao ? () => addProduct(newProduct) : () => editProduct(listName, productForm, newProduct)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
                 <Button onPress={toggleProductForm} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>

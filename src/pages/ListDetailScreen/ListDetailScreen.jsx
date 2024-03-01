@@ -42,6 +42,25 @@ export const ListDetailScreen = ({route, navigation}) => {
         setProductFormVisible((prev) => (!prev))
     }
 
+    const editProduct = (listName, product, newProduct) => {
+
+        // let listValues = [...shopLists]
+        // const index = listValues.indexOf(listName)
+        // listValues[index] = newListName
+        // save('Lists', listValues)
+        // setShopLists(listValues)
+        // toggleListForm()
+
+        const newProductArray = [...produtos]
+        const index = newProductArray.indexOf(product)
+        newProductArray[index] = newProduct
+    
+        //const newProductArray = [...produtos, {...product}]
+        setProdutos(newProductArray)
+        save(listName, newProductArray)
+        setProductFormVisible((prev) => (!prev))
+    }
+
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <SafeAreaView style={styles.container}>
@@ -75,7 +94,7 @@ export const ListDetailScreen = ({route, navigation}) => {
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                 >
-                    <ProductForm {...productForm} addProduct={addProduct} toggleProductForm={toggleProductForm}/>
+                    <ProductForm listName={title} productForm={productForm} addProduct={addProduct} editProduct={editProduct} toggleProductForm={toggleProductForm}/>
 			    </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>
