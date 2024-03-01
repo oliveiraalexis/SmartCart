@@ -2,9 +2,9 @@ import React, {useState} from 'react'
 import { View, TextInput, Text, StyleSheet } from 'react-native'
 import { Button } from '../Button/Button';
 
-export const ListForm = ({addList, toggleListForm}) => {
+export const ListForm = ({listForm = '', addList, toggleListForm}) => {
 
-    const [listName, setListName] = useState('');
+    const [listName, setListName] = useState(listForm);
 
     return (
         <View style={styles.container}>
@@ -14,7 +14,7 @@ export const ListForm = ({addList, toggleListForm}) => {
                     style={styles.input}
                     onChangeText={setListName}
                     value={listName}
-                    defaultValue=''
+                    defaultValue={listName}
                     autoFocus={true}
                 />
             </View>

@@ -17,8 +17,11 @@ export const ListsScreen = ({navigation}) => {
 
     const [shopLists, setShopLists] = useState(ListsStorage || [])
     const [ListFormVisible, setListFormVisible] = useState(false)
+    const [listForm, setListForm] = useState('')
 
-    const toggleListForm = () => {
+    const toggleListForm = (title = '') => {
+    
+        if (title != '') setListForm(title)
         setListFormVisible((prev) => (!prev))
     }
 
@@ -27,6 +30,14 @@ export const ListsScreen = ({navigation}) => {
     }
 
     const addList = (listName) => {
+        let listValues = [...shopLists]
+        listValues.push(listName)
+        save('Lists', listValues)
+        setShopLists(listValues)
+        toggleListForm()
+    }
+
+    const editList = (listName, newListName) => {
         let listValues = [...shopLists]
         listValues.push(listName)
         save('Lists', listValues)
@@ -46,7 +57,7 @@ export const ListsScreen = ({navigation}) => {
                 <Header title='SMARTCART'/>
                 <View style={styles.body}>
                     {shopLists.length > 0 && (shopLists.map((title, index)=>{
-                        return <CardList onPress={() => navigationToDetailScreen(title)} deleteList={() => deleteList(title)} key={index} title={title} />
+                        return <CardList onPress={() => navigationToDetailScreen(title)} deleteList={() => deleteList(title)} toggleListForm={() => toggleListForm(title)} key={index} title={title} />
                     }))}
                     { shopLists.length == 0 && (<Text style={styles.text}>
                         Nenhuma lista criada. {'\n'}Crie uma lista utilizando {'\n'}o botão “+” abaixo.
@@ -62,7 +73,7 @@ export const ListsScreen = ({navigation}) => {
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                     >
-                        <ListForm addList={addList} toggleListForm={toggleListForm}/>
+                        <ListForm listForm={listForm} addList={addList} toggleListForm={toggleListForm}/>
                 </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>
