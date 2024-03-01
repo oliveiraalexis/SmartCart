@@ -33,29 +33,17 @@ export const ListDetailScreen = ({route, navigation}) => {
     }
 
     const addProduct = (product) => {
-        const edicao = Object.keys(productForm).includes("nome", "tipo", "qtde", "preco") //Se for 'true' significa que o método está sendo chamado a partir do botão de edição de produto, logo não deve adicionar o produto de novo
-        if (!edicao) {
-            const newProductArray = [...produtos, {...product}]
-            setProdutos(newProductArray)
-            save(title, newProductArray)
-        }
+        const newProductArray = [...produtos, {...product}]
+        setProdutos(newProductArray)
+        save(title, newProductArray)
         setProductFormVisible((prev) => (!prev))
     }
 
     const editProduct = (listName, product, newProduct) => {
 
-        // let listValues = [...shopLists]
-        // const index = listValues.indexOf(listName)
-        // listValues[index] = newListName
-        // save('Lists', listValues)
-        // setShopLists(listValues)
-        // toggleListForm()
-
         const newProductArray = [...produtos]
         const index = newProductArray.indexOf(product)
         newProductArray[index] = newProduct
-    
-        //const newProductArray = [...produtos, {...product}]
         setProdutos(newProductArray)
         save(listName, newProductArray)
         setProductFormVisible((prev) => (!prev))
