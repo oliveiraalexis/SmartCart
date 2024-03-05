@@ -1,15 +1,15 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 
-export const Footer = () => {
+export const Footer = ({amount, count}) => {
 
     return (
         <View style={styles.container}>
             <View style={styles.qtde}>
-                <Text style={styles.text}>Qtde: 10</Text>
+                <Text style={styles.text}>Qtde: {count}</Text>
             </View>
             <View style={styles.total}>
-                <Text style={styles.text}>Total: 1000</Text>
+                <Text style={styles.text}>Total: {amount.toFixed(2)}</Text>
             </View>
         </View>
     )

@@ -20,8 +20,23 @@ export const ListDetailScreen = ({route, navigation}) => {
     const [productFormVisible, setProductFormVisible] = useState(false)
     const [productForm, setProductForm] = useState({})
     
-    const productsStorage = search(title)
-    const [produtos, setProdutos] = useState(productsStorage || [])
+    const [produtos, setProdutos] = useState(search(title) || [])
+
+    const calcAmount = () => {
+        let amount = 0
+        produtos.map((p, index)=>{
+            amount += p.preco
+        })
+        return amount
+    }
+
+    const countProducts = () => {
+        let count = 0
+        produtos.map((p, index)=>{
+            count++
+        })
+        return count
+    }
 
     const toggleProductForm = (product = {}) => {
         setProductForm(product)
@@ -80,7 +95,7 @@ export const ListDetailScreen = ({route, navigation}) => {
                         <Button onPress={() => toggleProductForm()} iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
                     </View>
                 </View>
-                <Footer />
+                <Footer amount={calcAmount()} count={countProducts()}/>
                 {productFormVisible && (<BottomSheet
                     ref={bottomSheetRef}
                     index={0}
