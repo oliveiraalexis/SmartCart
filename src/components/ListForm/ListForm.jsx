@@ -16,6 +16,7 @@ export const ListForm = ({listForm, addList, editList, toggleListForm}) => {
                     value={listName}
                     defaultValue={listName}
                     autoFocus={true}
+                    maxLength={34}
                 />
             </View>
             <View style={styles.button}>

@@ -30,6 +30,7 @@ export const ProductForm = ({listName, productForm, addProduct, editProduct, tog
                         onChangeText={setNome}
                         value={nomeProduto}
                         defaultValue={nomeProduto}
+                        maxLength={30}
                     />
                 </View>
                 <View>
@@ -66,6 +67,7 @@ export const ProductForm = ({listName, productForm, addProduct, editProduct, tog
                         value={qtdeProduto}
                         defaultValue={qtdeProduto}
                         keyboardType="numeric"
+                        maxLength={5}
                     />
                 </View>
                 <View>
@@ -76,6 +78,7 @@ export const ProductForm = ({listName, productForm, addProduct, editProduct, tog
                         value={precoProduto}
                         defaultValue={precoProduto}
                         keyboardType="numeric"
+                        maxLength={7}
                     />
                 </View>
             </View>
