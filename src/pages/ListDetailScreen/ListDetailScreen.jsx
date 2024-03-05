@@ -25,7 +25,6 @@ export const ListDetailScreen = ({route, navigation}) => {
 
     useEffect(() => {
         setProdutos(search(title))
-        console.log('chamei')
 
     }, []) //[]: the function will only be called once
 
@@ -35,7 +34,6 @@ export const ListDetailScreen = ({route, navigation}) => {
             amount += p.preco
         })
         setProductsAmount(amount)
-        console.log('chamei 2')
     }, [produtos]) //the function will be called whenever the product state variable changes
 
     const toggleProductForm = (product = {}) => {
