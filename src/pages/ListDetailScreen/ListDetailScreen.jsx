@@ -31,7 +31,7 @@ export const ListDetailScreen = ({route, navigation}) => {
     useEffect(() => {
         let amount = 0
         produtos.map((p, index)=>{
-            amount += p.preco
+            amount += (p.preco * p.qtde)
         })
         setProductsAmount(amount)
     }, [produtos]) //the function will be called whenever the product state variable changes
