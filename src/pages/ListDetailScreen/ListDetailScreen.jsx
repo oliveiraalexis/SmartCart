@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useRef } from 'react'
+import React, { useState, useMemo, useRef, useEffect } from 'react'
 import { View, Text, StyleSheet, SafeAreaView } from 'react-native'
 import { Header } from '../../components/Header/Header'
 import { Footer } from '../../components/Footer/Footer'
@@ -20,23 +20,23 @@ export const ListDetailScreen = ({route, navigation}) => {
     const [productFormVisible, setProductFormVisible] = useState(false)
     const [productForm, setProductForm] = useState({})
     
-    const [produtos, setProdutos] = useState(search(title) || [])
+    const [produtos, setProdutos] = useState([])
+    const [productsAmount, setProductsAmount] = useState(0)
 
-    const calcAmount = () => {
+    useEffect(() => {
+        setProdutos(search(title))
+        console.log('chamei')
+
+    }, []) //[]: the function will only be called once
+
+    useEffect(() => {
         let amount = 0
         produtos.map((p, index)=>{
             amount += p.preco
         })
-        return amount
-    }
-
-    const countProducts = () => {
-        let count = 0
-        produtos.map((p, index)=>{
-            count++
-        })
-        return count
-    }
+        setProductsAmount(amount)
+        console.log('chamei 2')
+    }, [produtos]) //the function will be called whenever the product state variable changes
 
     const toggleProductForm = (product = {}) => {
         setProductForm(product)
@@ -95,7 +95,7 @@ export const ListDetailScreen = ({route, navigation}) => {
                         <Button onPress={() => toggleProductForm()} iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
                     </View>
                 </View>
-                <Footer amount={calcAmount()} count={countProducts()}/>
+                <Footer amount={productsAmount} count={produtos.length}/>
                 {productFormVisible && (<BottomSheet
                     ref={bottomSheetRef}
                     index={0}
