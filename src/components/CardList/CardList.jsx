@@ -1,6 +1,7 @@
 import React from 'react'
 import { Text, StyleSheet, Pressable } from 'react-native'
 import { Button } from '../Button/Button'
+import { PopupMenu } from '../PopupMenu/PopupMenu'
 
 export const CardList = ({title, onPress, deleteList, toggleListForm}) => {
 
@@ -9,9 +10,8 @@ export const CardList = ({title, onPress, deleteList, toggleListForm}) => {
                 <Pressable onPress={() => onPress(title)} style={styles.buttonList}>
                     <Text style={styles.text}>{title}</Text>
                 </Pressable>
-                <Pressable style={styles.trash}>
-                    <Button onPress={() => deleteList(title)}  iconName='trash' bRadius={10} bBackgroundColor='#161E33' height={28} size={15}/>
-                    <Button onPress={toggleListForm} iconName='pencil' bRadius={10} bBackgroundColor='#161E33' height={28} size={15}/>
+                <Pressable style={styles.buttonMenu}>
+                    <PopupMenu title={title} deleteList={deleteList} toggleListForm={toggleListForm}/>
                 </Pressable>
         </Pressable>
     )
@@ -35,12 +35,12 @@ const styles = StyleSheet.create({
         
     },
     buttonList: {
-        flex: 7,
+        flex: 1,
         borderRadius: 10,
         alignSelf: 'center'
     },
-    trash:{
-        flex: 1,
-        alignSelf: 'center'
+    buttonMenu:{
+        justifyContent: 'center',
+        alignItems: 'center'
     }
 })
