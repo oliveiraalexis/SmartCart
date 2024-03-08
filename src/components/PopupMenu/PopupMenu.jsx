@@ -8,7 +8,7 @@ import {
     MenuTrigger,
   } from 'react-native-popup-menu';
 
-export const PopupMenu = ({title, deleteList, toggleListForm}) => {
+export const PopupMenu = ({param, del, toggleForm}) => {
 
     return (
         <View>
@@ -17,12 +17,12 @@ export const PopupMenu = ({title, deleteList, toggleListForm}) => {
                     <Icon name='ellipsis-v' size={15} color="#FFFFFF" />
                 </MenuTrigger>
                 <MenuOptions customStyles={optionsStyles}>
-                    <MenuOption style={styles.MenuOption} onSelect={toggleListForm} >
+                    <MenuOption style={styles.MenuOption} onSelect={toggleForm} >
                         <Icon name='pencil' size={15} color="#ffffff" />
                         <Text style={styles.text}>Editar</Text>
                     </MenuOption>
 
-                    <MenuOption style={styles.MenuOption} onSelect={() => deleteList(title)} >
+                    <MenuOption style={styles.MenuOption} onSelect={() => del(param)} >
                         <Icon name='trash' size={15} color="#ffffff" />
                         <Text style={styles.text}>Excluir</Text>
                     </MenuOption>
@@ -51,13 +51,13 @@ const styles = StyleSheet.create({
 
 const triggerStyles = {
     triggerWrapper: {
-        padding: 15,
+        paddingHorizontal: 10,
     }
 }
 
 const optionsStyles = {
     optionsContainer: {
         width: 'auto',
-        backgroundColor: '#2f416d',
+        backgroundColor: '#26355e',
     }
 }
