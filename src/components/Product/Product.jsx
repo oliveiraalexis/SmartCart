@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { Button } from '../Button/Button';
-import { Checkbox } from '../Checkbox/Checkbox';
+import { Button } from '../Button/Button'
+import { Checkbox } from '../Checkbox/Checkbox'
+import { PopupMenu } from '../PopupMenu/PopupMenu'
 
 export const Product = ({product, toggleProductForm, deleteProduct}) => {
 
@@ -22,8 +23,9 @@ export const Product = ({product, toggleProductForm, deleteProduct}) => {
                     <Text style={styles.text}>Preço Total: {parseFloat(product.qtde) * parseFloat(product.preco)}</Text>
                 </View>
                 <View style={styles.viewright}>
-                    <Button onPress={() => deleteProduct(product)} iconName='trash' bBackgroundColor='#161E33' size={15}/>
-                    <Button onPress={toggleProductForm} iconName='pencil' bBackgroundColor='#161E33' size={15}/>
+                    {/* <Button onPress={() => deleteProduct(product)} iconName='trash' bBackgroundColor='#161E33' size={15}/>
+                    <Button onPress={toggleProductForm} iconName='pencil' bBackgroundColor='#161E33' size={15}/> */}
+                    <PopupMenu param={product} del={deleteProduct} toggleForm={toggleProductForm}/>
                 </View>
         </View>
     )
