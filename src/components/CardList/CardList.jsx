@@ -11,7 +11,7 @@ export const CardList = ({title, onPress, deleteList, toggleListForm}) => {
                     <Text style={styles.text}>{title}</Text>
                 </Pressable>
                 <Pressable style={styles.buttonMenu}>
-                    <PopupMenu title={title} deleteList={deleteList} toggleListForm={toggleListForm}/>
+                    <PopupMenu param={title} del={deleteList} toggleForm={toggleListForm}/>
                 </Pressable>
         </Pressable>
     )
@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
     },
     buttonMenu:{
         justifyContent: 'center',
-        alignItems: 'center'
+        alignItems: 'center',
+        padding: 15
     }
 })
