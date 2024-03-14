@@ -31,7 +31,7 @@ export const ProductForm = ({listName, productForm, addProduct, editProduct, tog
 
         setPreco(digitsFloat)
         setMascaraPreco(usePriceMask(digitsFloat))
-      }
+    }
 
     let newProduct = {nome: nomeProduto, tipo: value, qtde: parseInt(qtdeProduto), preco: parseFloat(precoProduto)}
 
