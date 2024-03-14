@@ -9,10 +9,12 @@ export const Footer = ({amount, count}) => {
     return (
         <View style={styles.container}>
             <View style={styles.qtde}>
-                <Text style={styles.text}>Qtde: {count}</Text>
+                <Text style={styles.text}>QTDE DE ITENS</Text>
+                <Text style={styles.text}>{count}</Text>
             </View>
             <View style={styles.total}>
-                <Text style={styles.text}>Total: {amount}</Text>
+                <Text style={styles.text}>PREÇO TOTAL</Text>
+                <Text style={styles.text}>{amount}</Text>
             </View>
         </View>
     )
@@ -38,6 +40,6 @@ const styles = StyleSheet.create({
     text: {
         color: '#FFFFFF',
         fontWeight: 'bold',
-        fontSize: 20,
+        fontSize: 15,
     }
 })

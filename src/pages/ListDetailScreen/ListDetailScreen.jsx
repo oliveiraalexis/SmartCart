@@ -24,7 +24,8 @@ export const ListDetailScreen = ({route, navigation}) => {
     const [productsAmount, setProductsAmount] = useState(0)
 
     useEffect(() => {
-        setProdutos(search(title))
+        const produtos = search(title)
+        if (produtos.length > 0) setProdutos(produtos)
 
     }, []) //[]: the function will only be called once
 

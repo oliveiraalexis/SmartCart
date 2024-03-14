@@ -7,7 +7,9 @@ export const save = (key, value) => {
 }
 
 export const search = (key) => {
-    return storage.getArray(key)
+    const data = storage.getArray(key)
+    if (data) return data
+    return []
 }
 
 export const clear = () => {

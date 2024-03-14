@@ -109,11 +109,6 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
-    title: {
-        color: '#ffffff',
-        fontWeight: 'bold',
-        fontSize: 20
-    },
     text: {
         color: '#ffffff',
         fontWeight: 'bold',
