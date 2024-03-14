@@ -1,7 +1,10 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
+import { usePriceMask } from '../../hooks/usePriceMask'
 
 export const Footer = ({amount, count}) => {
+
+    amount = usePriceMask(amount)
 
     return (
         <View style={styles.container}>
@@ -9,7 +12,7 @@ export const Footer = ({amount, count}) => {
                 <Text style={styles.text}>Qtde: {count}</Text>
             </View>
             <View style={styles.total}>
-                <Text style={styles.text}>Total: {amount.toFixed(2)}</Text>
+                <Text style={styles.text}>Total: {amount}</Text>
             </View>
         </View>
     )
