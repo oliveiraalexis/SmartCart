@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { Button } from '../Button/Button'
 import { Checkbox } from '../Checkbox/Checkbox'
 import { PopupMenu } from '../PopupMenu/PopupMenu'
+import { usePriceMask } from '../../hooks/usePriceMask'
 
 export const Product = ({product, toggleProductForm, deleteProduct}) => {
 
@@ -12,6 +13,8 @@ export const Product = ({product, toggleProductForm, deleteProduct}) => {
         setSelection(prev => !prev)
     }
 
+    const precoTotal = parseFloat(product.qtde) * parseFloat(product.preco)
+
     return (
         <View style={styles.container}>
                 <View style={styles.viewleft}>                
@@ -20,7 +23,7 @@ export const Product = ({product, toggleProductForm, deleteProduct}) => {
                         <Text style={styles.title}>{product.nome}</Text>
                     </View>
                     <Text style={styles.text}>Quantidade: {product.qtde} {product.tipo}</Text>
-                    <Text style={styles.text}>Preço Total: {parseFloat(product.qtde) * parseFloat(product.preco)}</Text>
+                    <Text style={styles.text}>Preço Total: {usePriceMask(precoTotal.toString())}</Text>
                 </View>
                 <View style={styles.viewright}>
                     {/* <Button onPress={() => deleteProduct(product)} iconName='trash' bBackgroundColor='#161E33' size={15}/>
