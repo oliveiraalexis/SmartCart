@@ -55,7 +55,7 @@ export const ProductForm = ({listName, productForm, addProduct, editProduct, tog
                             style={styles.dropdown}
                             dropDownContainerStyle={{
                                 backgroundColor: '#D9D9D9',
-                                maxWidth: 80,
+                                maxWidth: 90,
                                 borderColor: '#D9D9D9',
                                 fontSize: 15,
                                 fontWeight: 'bold'
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     },
     inputNumber: {
         height: 35,
-        width: 80,
+        width: 90,
         borderRadius: 10,
         paddingVertical: 5,
         paddingStart: 10,
@@ -142,7 +142,7 @@ const styles = StyleSheet.create({
         borderWidth: 0,
         borderRadius: 10,
         backgroundColor: '#D9D9D9',
-        width: 80,
+        width: 90,
         minHeight: 35,
         maxMenuHeight: 10,
         marginTop: 7,
