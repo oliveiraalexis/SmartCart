@@ -2,21 +2,36 @@ import React, {useState} from 'react'
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
 import { Button } from '../Button/Button'
+import { usePriceMask } from '../../hooks/usePriceMask'
 
 export const ProductForm = ({listName, productForm, addProduct, editProduct, toggleProductForm}) => {
-
+    
     const edicao = Object.keys(productForm).includes("nome", "tipo", "qtde", "preco")
-
+    
     const [nomeProduto, setNome] = useState(edicao ? productForm.nome : '');
     const [qtdeProduto, setQtde] = useState(edicao ? productForm.qtde.toString() : '1');
-    const [precoProduto, setPreco] = useState(edicao ? productForm.preco.toString() : '0.00');
-
+    const [precoProduto, setPreco] = useState(edicao ? productForm.preco.toString() : '0');
+    const [mascaraPrecoProduto, setMascaraPreco] = useState(edicao ? usePriceMask(productForm.preco.toString()) : 'R$ 0,00');
+    
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(edicao ? productForm.tipo : 'un');
     const [items, setItems] = useState([
         {label: 'Kg', value: 'kg'},
         {label: 'Un', value: 'un'}
     ]);
+    
+    const formatarPreco = (preco) => {
+
+        const onlyDigits = preco
+            .split("")
+            .filter(s => /\d/.test(s))
+            .join("")
+            .padStart(3, "0")
+        const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
+
+        setPreco(digitsFloat)
+        setMascaraPreco(usePriceMask(digitsFloat))
+      }
 
     let newProduct = {nome: nomeProduto, tipo: value, qtde: parseInt(qtdeProduto), preco: parseFloat(precoProduto)}
 
@@ -74,11 +89,11 @@ export const ProductForm = ({listName, productForm, addProduct, editProduct, tog
                     <Text style={styles.text}>Preço unitário:</Text>
                     <TextInput
                         style={styles.inputNumber}
-                        onChangeText={setPreco}
-                        value={precoProduto}
-                        defaultValue={precoProduto}
+                        onChangeText={formatarPreco}
+                        value={mascaraPrecoProduto}
+                        defaultValue={mascaraPrecoProduto}
                         keyboardType="numeric"
-                        maxLength={7}
+                        maxLength={9}
                     />
                 </View>
             </View>
