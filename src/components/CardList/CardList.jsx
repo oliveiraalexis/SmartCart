@@ -30,9 +30,7 @@ const styles = StyleSheet.create({
         color: '#FFFFFF',
         fontWeight: 'bold',
         fontSize: 15,
-        marginHorizontal: 20,
-        paddingVertical: 20
-        
+        marginHorizontal: 20  
     },
     buttonList: {
         flex: 1,
