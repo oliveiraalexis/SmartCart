@@ -36,13 +36,17 @@ export const Product = ({product, toggleProductForm, deleteProduct}) => {
 
 const styles = StyleSheet.create({
     container: {
-        width: '100%',
-        borderBottomColor: '#717785',
-        borderBottomWidth: 2,
+        //borderBottomColor: '#717785',
+        //borderBottomWidth: 2,
         paddingVertical: 15,
-        paddingHorizontal: 5,
+        paddingHorizontal: 15,
         flexDirection: 'row',
         justifyContent: 'space-between',
+
+        marginHorizontal: 20,
+        marginTop: 20,
+        backgroundColor: '#161E33',
+        borderRadius: 10
     },
     title: {
         color: '#ffffff',
