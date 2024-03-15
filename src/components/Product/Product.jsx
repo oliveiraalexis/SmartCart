@@ -34,8 +34,6 @@ export const Product = ({product, toggleProductForm, deleteProduct}) => {
 
 const styles = StyleSheet.create({
     container: {
-        //borderBottomColor: '#717785',
-        //borderBottomWidth: 2,
         paddingVertical: 15,
         paddingHorizontal: 15,
         flexDirection: 'row',
