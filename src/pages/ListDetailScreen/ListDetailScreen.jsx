@@ -69,31 +69,40 @@ export const ListDetailScreen = ({route, navigation}) => {
         save(title, newProductArray)
     }
 
+    const listDetailFooterComponent = (
+        <View style={{alignItems: 'center', margin: 20}}>
+            <Button onPress={() => toggleProductForm()} iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
+        </View>
+    )
+
+    const emptyListDetailComponent = (
+        <Text style={styles.text}>Nenhum produto na lista. {'\n'}Inclua um produto utilizando {'\n'}o botão “+” abaixo.</Text>
+    )
+
+    const flatListRef = React.useRef()
+
+    function handleScrollToEnd() {
+        if (flatListRef.current) {
+            flatListRef.current.scrollToEnd()
+        }
+    }
+
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             <SafeAreaView style={styles.container}>
                 <Header goBack={navigationToListsScreen} title={title}/>
                 <View style={styles.body}>
-                   { produtos.length > 0 && ( <View style={styles.products}>
-                        <FlatList
-                            data={
-                                [
-                                    produtos.map((p, index)=>{
-                                        return <Product product={p} toggleProductForm={() => toggleProductForm(p)} deleteProduct={deleteProduct} key={index}/>
-                                    })
-                                ]
-                            }
-                            renderItem={({item}) => item}
-                        >
-                        </FlatList>
-                    </View>)}
-                    { produtos.length == 0 && (<Text style={styles.text}>
-                        Nenhum produto na lista. {'\n'}Inclua um produto utilizando {'\n'}o botão “+” abaixo.
-                    </Text>)}
-                    <View style={{alignItems: 'center', marginTop: 20}}>
-                        <Button onPress={() => toggleProductForm()} iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
-                    </View>
+                    <FlatList
+                        ref={flatListRef}
+                        onContentSizeChange={handleScrollToEnd} 
+                        data={produtos}
+                        renderItem={(product) => <Product product={product.item} toggleProductForm={() => toggleProductForm(product.item)} deleteProduct={deleteProduct}/>}
+                        ListEmptyComponent={emptyListDetailComponent}
+                        ListFooterComponent={listDetailFooterComponent}
+                    >
+                    </FlatList>
                 </View>
+               
                 <Footer amount={productsAmount} count={produtos.length}/>
                 {productFormVisible && (<BottomSheet
                     ref={bottomSheetRef}
@@ -111,21 +120,11 @@ export const ListDetailScreen = ({route, navigation}) => {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
-        
+        flex: 1,
+        backgroundColor: '#0A0E17'
     },
     body: {
-        width: '100%',
-        backgroundColor: '#0A0E17',
         flex: 1,
-        padding: 20
-
-    },
-    products: {
-        backgroundColor: '#161E33',
-        borderRadius: 10,
-        paddingHorizontal: 15,
-        paddingBottom: 15
     },
     text: {
         color: '#717785',
