@@ -26,8 +26,6 @@ export const Product = ({product, toggleProductForm, deleteProduct}) => {
                     <Text style={styles.text}>Preço Total: {usePriceMask(precoTotal.toString())}</Text>
                 </View>
                 <View style={styles.viewright}>
-                    {/* <Button onPress={() => deleteProduct(product)} iconName='trash' bBackgroundColor='#161E33' size={15}/>
-                    <Button onPress={toggleProductForm} iconName='pencil' bBackgroundColor='#161E33' size={15}/> */}
                     <PopupMenu param={product} del={deleteProduct} toggleForm={toggleProductForm}/>
                 </View>
         </View>
