@@ -52,7 +52,7 @@ export const ListsScreen = ({navigation}) => {
     }
 
     const listFooterComponent = (
-        <View style={{marginTop: 20}}>
+        <View style={{alignItems: 'center', margin: 20}}>
             <Button onPress={() => toggleListForm()} margin iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
         </View>
     )
@@ -100,11 +100,10 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#0A0E17'
-        
     },
     body: {
         alignItems: 'center',
-        padding: 20
+        marginHorizontal: 20
     },
     text: {
         color: '#717785',
