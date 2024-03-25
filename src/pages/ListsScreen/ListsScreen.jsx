@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 20
     },
     text: {
-        color: '#717785',
+        color: '#808696',
         fontWeight: 'bold',
         fontSize: 15,
         alignItems: 'center',
