@@ -1,6 +1,5 @@
 import React, {useState} from 'react'
 import { View, Text, StyleSheet } from 'react-native'
-import { Button } from '../Button/Button'
 import { Checkbox } from '../Checkbox/Checkbox'
 import { PopupMenu } from '../PopupMenu/PopupMenu'
 import { usePriceMask } from '../../hooks/usePriceMask'
