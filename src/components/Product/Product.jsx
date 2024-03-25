@@ -8,13 +8,12 @@ import { usePriceMask } from '../../hooks/usePriceMask'
 export const Product = ({product, toggleProductForm, deleteProduct}) => {
 
     const [isSelected, setSelection] = useState(false);
-
+    const precoTotal = parseFloat(product.qtde) * parseFloat(product.preco)
+    let checkboxColor = isSelected == true ? '#348555' : '#FFFFFF'
+    
     function onValueChange(){
         setSelection(prev => !prev)
     }
-
-    const precoTotal = parseFloat(product.qtde) * parseFloat(product.preco)
-    let checkboxColor = isSelected == true ? '#348555' : '#FFFFFF'
 
     return (
         <View style={styles.container}>
