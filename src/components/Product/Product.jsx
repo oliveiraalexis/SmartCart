@@ -5,7 +5,6 @@ import { PopupMenu } from '../PopupMenu/PopupMenu'
 import { usePriceMask } from '../../hooks/usePriceMask'
 
 export const Product = ({product, toggleProductForm, deleteProduct}) => {
-    console.log(product)
 
     const [isSelected, setSelection] = useState(product.checked);
     const precoTotal = parseFloat(product.qtde) * parseFloat(product.preco)
