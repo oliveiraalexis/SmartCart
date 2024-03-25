@@ -14,13 +14,18 @@ export const Product = ({product, toggleProductForm, deleteProduct}) => {
     }
 
     const precoTotal = parseFloat(product.qtde) * parseFloat(product.preco)
+    let checkboxColor = isSelected == true ? '#348555' : '#FFFFFF'
 
     return (
         <View style={styles.container}>
                 <View style={styles.viewleft}>                
                     <View style={styles.viewtop}>
-                        <Checkbox value={isSelected} onValueChange={onValueChange}/>
-                        <Text style={styles.title}>{product.nome}</Text>
+                        <Checkbox value={isSelected} onValueChange={onValueChange} checkboxColor={checkboxColor}/>
+                        <Text style={{
+                            color: checkboxColor,
+                            fontWeight: 'bold',
+                            fontSize: 15,}}
+                        >{product.nome}</Text>
                     </View>
                     <Text style={styles.text}>Quantidade: {product.qtde} {product.tipo}</Text>
                     <Text style={styles.text}>Preço Total: {usePriceMask(precoTotal.toString())}</Text>
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
         fontSize: 15,
     },
     text: {
-        color: '#717785',
+        color: '#808696',
         fontWeight: 'bold',
         fontSize: 12,
         marginTop: 6,
