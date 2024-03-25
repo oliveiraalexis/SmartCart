@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import RNCheckBox from '@react-native-community/checkbox'
 
-export const Checkbox = ({onValueChange, value}) => {
+export const Checkbox = ({onValueChange, value, checkboxColor}) => {
 
     if (Platform.OS === 'android'){
         return (
@@ -10,7 +10,7 @@ export const Checkbox = ({onValueChange, value}) => {
                 disabled={false}
                 value={value}
                 onValueChange={onValueChange}
-                tintColors={{true: '#FFFFFF', false: '#FFFFFF'}}
+                tintColors={{true: checkboxColor, false: checkboxColor}}
             />
         )
     }
@@ -20,10 +20,10 @@ export const Checkbox = ({onValueChange, value}) => {
             disabled={false}
             value={value}
             onValueChange={onValueChange}
-            tintColor= '#FFFFFF'
-            onCheckColor= '#FFFFFF'
-            onFillColor= '#FFFFFF'
-            onTintColor= '#FFFFFF'
+            tintColor={checkboxColor}
+            onCheckColor={checkboxColor}
+            onFillColor={checkboxColor}
+            onTintColor={checkboxColor}
         />
     )
 }
