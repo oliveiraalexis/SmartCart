@@ -33,7 +33,7 @@ export const ProductForm = ({listName, productForm, addProduct, editProduct, tog
         setMascaraPreco(usePriceMask(digitsFloat))
     }
 
-    let newProduct = {nome: nomeProduto, tipo: value, qtde: parseInt(qtdeProduto), preco: parseFloat(precoProduto)}
+    let newProduct = {nome: nomeProduto, tipo: value, qtde: parseInt(qtdeProduto), preco: parseFloat(precoProduto), checked: false}
 
     return (
         <View style={styles.container}>
