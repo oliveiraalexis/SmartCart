@@ -8,7 +8,7 @@ import {
     MenuTrigger,
   } from 'react-native-popup-menu';
 
-export const PopupMenu = ({param, del, toggleForm}) => {
+export const PopupMenu = ({param, deleteItem, toggleForm}) => {
 
     return (
         <View>
@@ -22,7 +22,7 @@ export const PopupMenu = ({param, del, toggleForm}) => {
                         <Text style={styles.text}>Editar</Text>
                     </MenuOption>
 
-                    <MenuOption style={styles.MenuOption} onSelect={() => del(param)} >
+                    <MenuOption style={styles.MenuOption} onSelect={() => deleteItem(param)} >
                         <Icon name='trash' size={15} color="#ffffff" />
                         <Text style={styles.text}>Excluir</Text>
                     </MenuOption>

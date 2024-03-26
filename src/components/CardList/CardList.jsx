@@ -11,7 +11,7 @@ export const CardList = ({title, onPress, deleteList, toggleListForm}) => {
                     <Text style={styles.text}>{title}</Text>
                 </Pressable>
                 <Pressable style={styles.buttonMenu}>
-                    <PopupMenu param={title} del={deleteList} toggleForm={toggleListForm}/>
+                    <PopupMenu param={title} deleteItem={deleteList} toggleForm={toggleListForm}/>
                 </Pressable>
         </Pressable>
     )

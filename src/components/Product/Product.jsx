@@ -29,7 +29,7 @@ export const Product = ({product, toggleProductForm, deleteProduct}) => {
                     <Text style={styles.text}>Preço Total: {usePriceMask(precoTotal.toString())}</Text>
                 </View>
                 <View style={styles.viewright}>
-                    <PopupMenu param={product} del={deleteProduct} toggleForm={toggleProductForm}/>
+                    <PopupMenu param={product} deleteItem={deleteProduct} toggleForm={toggleProductForm}/>
                 </View>
         </View>
     )
