@@ -1,6 +1,5 @@
 import React from 'react'
 import { Text, StyleSheet, Pressable } from 'react-native'
-import { Button } from '../Button/Button'
 import { PopupMenu } from '../PopupMenu/PopupMenu'
 
 export const CardList = ({title, onPress, deleteList, toggleListForm}) => {
