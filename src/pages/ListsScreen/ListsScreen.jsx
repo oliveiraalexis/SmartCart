@@ -7,42 +7,30 @@ import { ListForm } from '../../components/ListForm/ListForm'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { search, save } from '../../services/Storage'
+import { useEffect } from 'react'
 
 export const ListsScreen = ({navigation}) => {
 
     const bottomSheetRef = useRef(null);
 	const snapPoints = useMemo(() => ['30%'], []);
 
-    const ListsStorage = search('Lists')
-
-    const [shopLists, setShopLists] = useState(ListsStorage || [])
+    const [shopLists, setShopLists] = useState([])
     const [ListFormVisible, setListFormVisible] = useState(false)
-    const [listForm, setListForm] = useState('')
+    const [listToBeEdited, setListToBeEdited] = useState('')
+
+    useEffect(() => {
+        const storageLists = search('Lists')
+        if (storageLists.length > 0) setShopLists(storageLists)
+
+    }, [ListFormVisible])
 
     const toggleListForm = (title = '') => {
-        setListForm(title)
+        setListToBeEdited(title)
         setListFormVisible((prev) => (!prev))
     }
 
     const navigationToDetailScreen = (title) => {
         navigation.navigate('ListDetailScreen', {title})
-    }
-
-    const addList = (listName) => {
-        let listValues = [...shopLists]
-        listValues.push(listName)
-        save('Lists', listValues)
-        setShopLists(listValues)
-        toggleListForm()
-    }
-
-    const editList = (listName, newListName) => {
-        let listValues = [...shopLists]
-        const index = listValues.indexOf(listName)
-        listValues[index] = newListName
-        save('Lists', listValues)
-        setShopLists(listValues)
-        toggleListForm()
     }
 
     const deleteList = (listName) => {
@@ -89,7 +77,7 @@ export const ListsScreen = ({navigation}) => {
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                     >
-                        <ListForm listForm={listForm} addList={addList} editList={editList} toggleListForm={toggleListForm}/>
+                        <ListForm listToBeEdited={listToBeEdited} toggleListForm={toggleListForm}/>
                 </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>

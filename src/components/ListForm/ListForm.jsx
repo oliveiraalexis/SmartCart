@@ -1,10 +1,28 @@
 import React, {useState} from 'react'
 import { View, TextInput, Text, StyleSheet } from 'react-native'
 import { Button } from '../Button/Button';
+import { search, save } from '../../services/Storage'
 
-export const ListForm = ({listForm, addList, editList, toggleListForm}) => {
+export const ListForm = ({listToBeEdited, toggleListForm}) => {
 
-    const [listName, setListName] = useState(listForm);
+    const [listName, setListName] = useState(listToBeEdited);
+
+    const addList = (listName) => {
+        const storageLists = search('Lists') 
+        let newStorageLists = [...storageLists]
+        newStorageLists.push(listName)
+        save('Lists', newStorageLists)
+        toggleListForm()
+    }
+
+    const editList = (listName, newListName) => {
+        const storageLists = search('Lists')
+        let newStorageLists = [...storageLists]
+        const index = newStorageLists.indexOf(listName)
+        newStorageLists[index] = newListName
+        save('Lists', newStorageLists)
+        toggleListForm()
+    }
 
     return (
         <View style={styles.container}>
@@ -20,7 +38,7 @@ export const ListForm = ({listForm, addList, editList, toggleListForm}) => {
                 />
             </View>
             <View style={styles.button}>
-                <Button onPress={listForm == '' ? () => addList(listName) : () => editList(listForm, listName)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
+                <Button onPress={listToBeEdited == '' ? () => addList(listName) : () => editList(listToBeEdited, listName)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
                 <Button onPress={() => toggleListForm()} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>

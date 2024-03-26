@@ -18,7 +18,7 @@ export const ListDetailScreen = ({route, navigation}) => {
 	const snapPoints = useMemo(() => ['70%'], []);
     
     const [productFormVisible, setProductFormVisible] = useState(false)
-    const [productForm, setProductForm] = useState({})
+    const [productToBeEdited, setProductToBeEdited] = useState({})
     
     const [produtos, setProdutos] = useState([])
     const [productsAmount, setProductsAmount] = useState(0)
@@ -27,7 +27,7 @@ export const ListDetailScreen = ({route, navigation}) => {
         const produtos = search(title)
         if (produtos.length > 0) setProdutos(produtos)
 
-    }, []) //[]: the function will only be called once
+    }, [productFormVisible])
 
     useEffect(() => {
         let amount = 0
@@ -35,32 +35,15 @@ export const ListDetailScreen = ({route, navigation}) => {
             amount += (p.preco * p.qtde)
         })
         setProductsAmount(amount)
-    }, [produtos]) //the function will be called whenever the product state variable changes
+    }, [produtos])
 
     const toggleProductForm = (product = {}) => {
-        setProductForm(product)
+        setProductToBeEdited(product)
         setProductFormVisible((prev) => (!prev))
     }
 
     const navigationToListsScreen = () => {
         navigation.goBack()
-    }
-
-    const addProduct = (product) => {
-        const newProductArray = [...produtos, {...product}]
-        setProdutos(newProductArray)
-        save(title, newProductArray)
-        setProductFormVisible((prev) => (!prev))
-    }
-
-    const editProduct = (listName, product, newProduct) => {
-
-        const newProductArray = [...produtos]
-        const index = newProductArray.indexOf(product)
-        newProductArray[index] = newProduct
-        setProdutos(newProductArray)
-        save(listName, newProductArray)
-        setProductFormVisible((prev) => (!prev))
     }
 
     const deleteProduct = (product) => {
@@ -111,7 +94,7 @@ export const ListDetailScreen = ({route, navigation}) => {
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                 >
-                    <ProductForm listName={title} productForm={productForm} addProduct={addProduct} editProduct={editProduct} toggleProductForm={toggleProductForm}/>
+                    <ProductForm listName={title} productToBeEdited={productToBeEdited} toggleProductForm={toggleProductForm}/>
 			    </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>

@@ -3,18 +3,19 @@ import { View, Text, StyleSheet, TextInput } from 'react-native'
 import DropDownPicker from 'react-native-dropdown-picker'
 import { Button } from '../Button/Button'
 import { usePriceMask } from '../../hooks/usePriceMask'
+import { search, save } from '../../services/Storage'
 
-export const ProductForm = ({listName, productForm, addProduct, editProduct, toggleProductForm}) => {
+export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) => {
     
-    const edicao = Object.keys(productForm).includes("nome", "tipo", "qtde", "preco")
+    const edicao = Object.keys(productToBeEdited).includes("nome", "tipo", "qtde", "preco", "checked")
     
-    const [nomeProduto, setNome] = useState(edicao ? productForm.nome : '');
-    const [qtdeProduto, setQtde] = useState(edicao ? productForm.qtde.toString() : '1');
-    const [precoProduto, setPreco] = useState(edicao ? productForm.preco.toString() : '0');
-    const [mascaraPrecoProduto, setMascaraPreco] = useState(edicao ? usePriceMask(productForm.preco.toString()) : 'R$ 0,00');
+    const [nomeProduto, setNome] = useState(edicao ? productToBeEdited.nome : '');
+    const [qtdeProduto, setQtde] = useState(edicao ? productToBeEdited.qtde.toString() : '1');
+    const [precoProduto, setPreco] = useState(edicao ? productToBeEdited.preco.toString() : '0');
+    const [mascaraPrecoProduto, setMascaraPreco] = useState(edicao ? usePriceMask(productToBeEdited.preco.toString()) : 'R$ 0,00');
     
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(edicao ? productForm.tipo : 'un');
+    const [value, setValue] = useState(edicao ? productToBeEdited.tipo : 'un');
     const [items, setItems] = useState([
         {label: 'Kg', value: 'kg'},
         {label: 'Un', value: 'un'}
@@ -33,7 +34,22 @@ export const ProductForm = ({listName, productForm, addProduct, editProduct, tog
         setMascaraPreco(usePriceMask(digitsFloat))
     }
 
-    let newProduct = {nome: nomeProduto, tipo: value, qtde: parseInt(qtdeProduto), preco: parseFloat(precoProduto), checked: false}
+    const addProduct = (listName) => {
+        let newProduct = {nome: nomeProduto, tipo: value, qtde: parseInt(qtdeProduto), preco: parseFloat(precoProduto), checked: false}
+        const storageProducts = search(listName)
+        const newProductArray = [...storageProducts, {...newProduct}]
+        save(listName, newProductArray)
+        toggleProductForm()
+    }
+
+    const editProduct = (listName, currentProduct) => {
+        let newProduct = {nome: nomeProduto, tipo: value, qtde: parseInt(qtdeProduto), preco: parseFloat(precoProduto), checked: edicao ? productToBeEdited.checked : false}
+        let storageProducts = search(listName)
+        const index = storageProducts.findIndex(item => JSON.stringify(item) === JSON.stringify(currentProduct))
+        storageProducts[index] = newProduct
+        save(listName, storageProducts)
+        toggleProductForm()
+    }
 
     return (
         <View style={styles.container}>
@@ -98,7 +114,7 @@ export const ProductForm = ({listName, productForm, addProduct, editProduct, tog
                 </View>
             </View>
             <View style={styles.button}>
-                <Button onPress={!edicao ? () => addProduct(newProduct) : () => editProduct(listName, productForm, newProduct)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
+                <Button onPress={!edicao ? () => addProduct(listName) : () => editProduct(listName, productToBeEdited)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
                 <Button onPress={() => toggleProductForm()} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>
