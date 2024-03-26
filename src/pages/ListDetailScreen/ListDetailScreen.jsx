@@ -25,7 +25,7 @@ export const ListDetailScreen = ({route, navigation}) => {
 
     useEffect(() => {
         const produtos = search(title)
-        if (produtos.length > 0) setProdutos(produtos)
+        if (produtos.length >= 0) setProdutos(produtos)
 
     }, [productFormVisible])
 

@@ -12,6 +12,10 @@ export const search = (key) => {
     return []
 }
 
+export const remove = (key) => {
+    storage.removeItem(key)
+}
+
 export const clear = () => {
     storage.clearStore()
 }

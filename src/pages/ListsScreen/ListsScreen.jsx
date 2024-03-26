@@ -6,7 +6,7 @@ import { CardList } from '../../components/CardList/CardList'
 import { ListForm } from '../../components/ListForm/ListForm'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import BottomSheet from '@gorhom/bottom-sheet'
-import { search, save } from '../../services/Storage'
+import { search, save, remove } from '../../services/Storage'
 import { useEffect } from 'react'
 
 export const ListsScreen = ({navigation}) => {
@@ -20,7 +20,7 @@ export const ListsScreen = ({navigation}) => {
 
     useEffect(() => {
         const storageLists = search('Lists')
-        if (storageLists.length > 0) setShopLists(storageLists)
+        if (storageLists.length >= 0) setShopLists(storageLists)
 
     }, [ListFormVisible])
 
@@ -36,6 +36,7 @@ export const ListsScreen = ({navigation}) => {
     const deleteList = (listName) => {
         let listValues  = [...shopLists].filter(item => item != listName)
         save('Lists', listValues)
+        remove(listName)
         setShopLists(listValues)
     }
 
