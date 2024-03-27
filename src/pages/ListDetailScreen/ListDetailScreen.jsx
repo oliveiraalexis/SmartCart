@@ -51,12 +51,6 @@ export const ListDetailScreen = ({route, navigation}) => {
         navigation.goBack()
     }
 
-    const deleteProduct = (product) => {
-        const newProductArray = [...produtos].filter(item => item != product)
-        setProdutos(newProductArray)
-        save(title, newProductArray)
-    }
-
     const listDetailFooterComponent = (
         <View style={{alignItems: 'center', margin: 20}}>
             <Button onPress={() => toggleProductForm()} iconName='plus' bRadius={30} bBackgroundColor='#161E33' width={50} height={50}/>
