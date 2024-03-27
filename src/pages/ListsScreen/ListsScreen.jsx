@@ -29,15 +29,13 @@ export const ListsScreen = ({navigation}) => {
         setListFormVisible((prev) => (!prev))
     }
 
-    const navigationToDetailScreen = (title) => {
-        navigation.navigate('ListDetailScreen', {title})
+    const refreshListsArray = () => {
+        const storageLists = search('Lists')
+        if (storageLists.length >= 0) setShopLists(storageLists)
     }
 
-    const deleteList = (listName) => {
-        let listValues  = [...shopLists].filter(item => item != listName)
-        save('Lists', listValues)
-        remove(listName)
-        setShopLists(listValues)
+    const navigationToDetailScreen = (title) => {
+        navigation.navigate('ListDetailScreen', {title})
     }
 
     const listFooterComponent = (
@@ -67,7 +65,7 @@ export const ListsScreen = ({navigation}) => {
                     onContentSizeChange={handleScrollToEnd} 
                     contentContainerStyle={styles.body}
                     data={shopLists}
-                    renderItem={({item}) => <CardList title={item} onPress={navigationToDetailScreen} deleteList={deleteList} toggleListForm={() => toggleListForm(item)}/>}
+                    renderItem={({item}) => <CardList title={item} onPress={navigationToDetailScreen} refreshLists={refreshListsArray} toggleListForm={() => toggleListForm(item)}/>}
                     ListEmptyComponent={emptyListComponent}
                     ListFooterComponent={listFooterComponent}
                 />

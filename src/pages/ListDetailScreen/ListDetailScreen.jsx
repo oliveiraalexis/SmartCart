@@ -24,8 +24,8 @@ export const ListDetailScreen = ({route, navigation}) => {
     const [productsAmount, setProductsAmount] = useState(0)
 
     useEffect(() => {
-        const produtos = search(title)
-        if (produtos.length >= 0) setProdutos(produtos)
+        const products = search(title)
+        if (products.length >= 0) setProdutos([...products])
 
     }, [productFormVisible])
 
@@ -40,6 +40,11 @@ export const ListDetailScreen = ({route, navigation}) => {
     const toggleProductForm = (product = {}) => {
         setProductToBeEdited(product)
         setProductFormVisible((prev) => (!prev))
+    }
+
+    const refreshProductsArray = () => {
+        const products = search(title)
+        if (products.length >= 0) setProdutos([...products])
     }
 
     const navigationToListsScreen = () => {
@@ -78,8 +83,8 @@ export const ListDetailScreen = ({route, navigation}) => {
                     <FlatList
                         ref={flatListRef}
                         onContentSizeChange={handleScrollToEnd} 
-                        data={produtos}
-                        renderItem={(product) => <Product product={product.item} toggleProductForm={() => toggleProductForm(product.item)} deleteProduct={deleteProduct}/>}
+                        data={[...produtos]}
+                        renderItem={(product) => <Product listName={title} product={product.item} toggleProductForm={() => toggleProductForm(product.item)} refreshProducts={refreshProductsArray}/>}
                         ListEmptyComponent={emptyListDetailComponent}
                         ListFooterComponent={listDetailFooterComponent}
                     >

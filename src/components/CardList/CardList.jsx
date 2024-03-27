@@ -2,7 +2,7 @@ import React from 'react'
 import { Text, StyleSheet, Pressable } from 'react-native'
 import { PopupMenu } from '../PopupMenu/PopupMenu'
 
-export const CardList = ({title, onPress, deleteList, toggleListForm}) => {
+export const CardList = ({title, onPress, refreshLists, toggleListForm}) => {
 
     return (
         <Pressable style={styles.container}>
@@ -10,7 +10,7 @@ export const CardList = ({title, onPress, deleteList, toggleListForm}) => {
                     <Text style={styles.text}>{title}</Text>
                 </Pressable>
                 <Pressable style={styles.buttonMenu}>
-                    <PopupMenu param={title} deleteItem={deleteList} toggleForm={toggleListForm}/>
+                    <PopupMenu item={title} refreshItemArray={refreshLists} toggleForm={toggleListForm}/>
                 </Pressable>
         </Pressable>
     )

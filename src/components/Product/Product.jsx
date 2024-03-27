@@ -4,7 +4,7 @@ import { Checkbox } from '../Checkbox/Checkbox'
 import { PopupMenu } from '../PopupMenu/PopupMenu'
 import { usePriceMask } from '../../hooks/usePriceMask'
 
-export const Product = ({product, toggleProductForm, deleteProduct}) => {
+export const Product = ({listName, product, refreshProducts, toggleProductForm}) => {
 
     const [isSelected, setSelection] = useState(product.checked);
     const precoTotal = parseFloat(product.qtde) * parseFloat(product.preco)
@@ -29,7 +29,7 @@ export const Product = ({product, toggleProductForm, deleteProduct}) => {
                     <Text style={styles.text}>Preço Total: {usePriceMask(precoTotal.toString())}</Text>
                 </View>
                 <View style={styles.viewright}>
-                    <PopupMenu param={product} deleteItem={deleteProduct} toggleForm={toggleProductForm}/>
+                    <PopupMenu item={{...product}} storageKey={listName} refreshItemArray={refreshProducts} toggleForm={toggleProductForm}/>
                 </View>
         </View>
     )
