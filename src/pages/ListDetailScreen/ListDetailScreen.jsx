@@ -8,7 +8,7 @@ import { Product } from '../../components/Product/Product'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
 import BottomSheet from '@gorhom/bottom-sheet'
 import { ProductForm } from '../../components/ProductForm/ProductForm'
-import { search, save } from '../../services/Storage'
+import { search } from '../../services/Storage'
 
 export const ListDetailScreen = ({route, navigation}) => {
 
