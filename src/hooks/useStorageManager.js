@@ -1,8 +1,8 @@
 import { search, save, remove } from "../services/Storage"
 
-export const deleteItem = (storageKey, item) => {
+export const deleteItem = (storageKey, item, refreshItemArray) => {
     const storage = search(storageKey)
-    let filteredStorage = [...storageItens].filter(value => JSON.stringify(value) != JSON.stringify(item))
+    let filteredStorage = [...storage].filter(value => JSON.stringify(value) != JSON.stringify(item))
     if (storageKey == 'Lists') remove(item)
     save(storageKey, [...filteredStorage])
     refreshItemArray()
