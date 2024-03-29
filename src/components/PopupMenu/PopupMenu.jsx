@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
-import { search, save, remove } from '../../services/Storage'
+import { deleteItem } from '../../hooks/useStorageManager'
 import {
     Menu,
     MenuOptions,
@@ -10,14 +10,6 @@ import {
   } from 'react-native-popup-menu';
 
 export const PopupMenu = ({item, storageKey = 'Lists', refreshItemArray, toggleForm}) => {
-
-    const deleteItem = (item) => {
-        const storageItens = search(storageKey)
-        let filteredStorage = [...storageItens].filter(value => JSON.stringify(value) != JSON.stringify(item))
-        if (storageKey == 'Lists') remove(item)
-        save(storageKey, [...filteredStorage])
-        refreshItemArray()
-    }
 
     return (
         <View>
@@ -31,7 +23,7 @@ export const PopupMenu = ({item, storageKey = 'Lists', refreshItemArray, toggleF
                         <Text style={styles.text}>Editar</Text>
                     </MenuOption>
 
-                    <MenuOption style={styles.MenuOption} onSelect={() => deleteItem(item)} >
+                    <MenuOption style={styles.MenuOption} onSelect={() => deleteItem(storageKey, item, refreshItemArray)} >
                         <Icon name='trash' size={15} color="#ffffff" />
                         <Text style={styles.text}>Excluir</Text>
                     </MenuOption>
