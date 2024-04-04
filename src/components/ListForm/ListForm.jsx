@@ -21,7 +21,7 @@ export const ListForm = ({listToBeEdited, toggleListForm}) => {
                 />
             </View>
             <View style={styles.button}>
-                <Button onPress={listToBeEdited == '' ? () => addItem('Lists', listName, toggleListForm) : () => editItem('Lists', listToBeEdited, listName, toggleListForm)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
+                <Button disabled={listName == ''} onPress={listToBeEdited == '' ? () => addItem('Lists', listName, toggleListForm) : () => editItem('Lists', listToBeEdited, listName, toggleListForm)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
                 <Button onPress={() => toggleListForm()} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>
