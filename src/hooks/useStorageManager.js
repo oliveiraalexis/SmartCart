@@ -26,5 +26,5 @@ export const editItem = (storageKey, item, newItem, toggleForm) => {
 
     newStorage[index] = newItem
     save(storageKey, newStorage)
-    toggleForm()
+    if(toggleForm) toggleForm()
 }
