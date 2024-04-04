@@ -3,6 +3,7 @@ import { View, Text, StyleSheet } from 'react-native'
 import { Checkbox } from '../Checkbox/Checkbox'
 import { PopupMenu } from '../PopupMenu/PopupMenu'
 import { usePriceMask } from '../../hooks/usePriceMask'
+import { editItem } from '../../hooks/useStorageManager'
 
 export const Product = ({listName, product, refreshProducts, toggleProductForm}) => {
 
@@ -11,7 +12,11 @@ export const Product = ({listName, product, refreshProducts, toggleProductForm})
     let checkboxColor = isSelected == true ? '#348555' : '#FFFFFF'
     
     function onValueChange(){
-        setSelection(prev => !prev)
+        let newProduct = {...product}
+        newProduct.checked = !newProduct.checked
+        setSelection(newProduct.checked)
+        editItem(listName, product, newProduct, null)
+        refreshProducts()
     }
 
     return (
