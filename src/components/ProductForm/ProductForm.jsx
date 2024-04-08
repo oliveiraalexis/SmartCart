@@ -12,8 +12,9 @@ export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) =>
     const [nomeProduto, setNome] = useState(edicao ? productToBeEdited.nome : '');
     const [qtdeProduto, setQtde] = useState(edicao ? productToBeEdited.qtde.toString() : '1');
     const [precoProduto, setPreco] = useState(edicao ? productToBeEdited.preco.toString() : '0');
-    const [mascaraPrecoProduto, setMascaraPreco] = useState(edicao ? usePriceMask(productToBeEdited.preco.toString()) : 'R$ 0,00');
+    const [mascaraPrecoProduto, setMascaraPreco] = useState(edicao ? usePriceMask(productToBeEdited.preco.toString()) : usePriceMask('0'));
     let newProduct = {}
+    const qtdeRegex = /^[1-9]\d*$/;
     
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(edicao ? productToBeEdited.tipo : 'un');
@@ -37,6 +38,15 @@ export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) =>
 
         setPreco(digitsFloat)
         setMascaraPreco(usePriceMask(digitsFloat))
+    }
+
+    const formatarQtde = (qtde) => {
+        const onlyNumbers = qtde
+        
+        if (qtde) onlyNumbers = qtde.filter(s => /^[1-9]\d*$/.test(s))
+        
+        console.log(onlyNumbers)
+        setQtde(onlyNumbers)
     }
 
     return (
@@ -82,7 +92,7 @@ export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) =>
                     <Text style={styles.text}>Quantidade:</Text>
                     <TextInput
                         style={styles.inputNumber}
-                        onChangeText={setQtde}
+                        onChangeText={formatarQtde}
                         value={qtdeProduto}
                         defaultValue={qtdeProduto}
                         keyboardType="numeric"
@@ -102,7 +112,7 @@ export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) =>
                 </View>
             </View>
             <View style={styles.button}>
-                <Button onPress={!edicao ? () => addItem(listName, newProduct, toggleProductForm) : () => editItem(listName, productToBeEdited, newProduct, toggleProductForm)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
+                <Button disabled={nomeProduto == '' || qtdeProduto == '' || parseInt(qtdeProduto) < 1} onPress={!edicao ? () => addItem(listName, newProduct, toggleProductForm) : () => editItem(listName, productToBeEdited, newProduct, toggleProductForm)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
                 <Button onPress={() => toggleProductForm()} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>
