@@ -4,6 +4,7 @@ import DropDownPicker from 'react-native-dropdown-picker'
 import { Button } from '../Button/Button'
 import { usePriceMask } from '../../hooks/usePriceMask'
 import { addItem, editItem } from '../../hooks/useStorageManager'
+import AmountInput from '../AmountInput/AmountInput'
 
 export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) => {
     
@@ -14,7 +15,6 @@ export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) =>
     const [precoProduto, setPreco] = useState(edicao ? productToBeEdited.preco.toString() : '0');
     const [mascaraPrecoProduto, setMascaraPreco] = useState(edicao ? usePriceMask(productToBeEdited.preco.toString()) : usePriceMask('0'));
     let newProduct = {}
-    const qtdeRegex = /^[1-9]\d*$/;
     
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(edicao ? productToBeEdited.tipo : 'un');
@@ -38,15 +38,6 @@ export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) =>
 
         setPreco(digitsFloat)
         setMascaraPreco(usePriceMask(digitsFloat))
-    }
-
-    const formatarQtde = (qtde) => {
-        const onlyNumbers = qtde
-        
-        if (qtde) onlyNumbers = qtde.filter(s => /^[1-9]\d*$/.test(s))
-        
-        console.log(onlyNumbers)
-        setQtde(onlyNumbers)
     }
 
     return (
@@ -90,13 +81,9 @@ export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) =>
                 </View>
                 <View>
                     <Text style={styles.text}>Quantidade:</Text>
-                    <TextInput
-                        style={styles.inputNumber}
-                        onChangeText={formatarQtde}
-                        value={qtdeProduto}
-                        defaultValue={qtdeProduto}
-                        keyboardType="numeric"
-                        maxLength={5}
+                    <AmountInput
+                        amount={qtdeProduto}
+                        setQtde={setQtde}
                     />
                 </View>
                 <View>
@@ -150,7 +137,8 @@ const styles = StyleSheet.create({
         fontSize: 15,
         fontWeight: 'bold',
         marginTop: 7,
-        marginBottom: 7
+        marginBottom: 7,
+        color: '#000000'
     },
     dropdown: {
         borderWidth: 0,
