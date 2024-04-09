@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, StyleSheet } from 'react-native'
+import { View, Text, StyleSheet, Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome'
 import { deleteItem } from '../../hooks/useStorageManager'
 import {
@@ -10,6 +10,24 @@ import {
   } from 'react-native-popup-menu';
 
 export const PopupMenu = ({item, storageKey = 'Lists', refreshItemArray, toggleForm}) => {
+
+    const confirmAction = () => {
+        Alert.alert(
+            'Atenção!',
+            'Deseja realmente excluir este item? Esta ação não poderá ser revertida.',
+            [
+                {
+                    text: 'Cancelar',
+                    onPress: null,
+                    style: 'cancel',
+                },
+                {
+                    text: 'Excluir',
+                    onPress: () => deleteItem(storageKey, item, refreshItemArray),
+                }
+            ]
+        )
+    }
 
     return (
         <View>
@@ -23,7 +41,7 @@ export const PopupMenu = ({item, storageKey = 'Lists', refreshItemArray, toggleF
                         <Text style={styles.text}>Editar</Text>
                     </MenuOption>
 
-                    <MenuOption style={styles.MenuOption} onSelect={() => deleteItem(storageKey, item, refreshItemArray)} >
+                    <MenuOption style={styles.MenuOption} onSelect={confirmAction} >
                         <Icon name='trash' size={15} color="#ffffff" />
                         <Text style={styles.text}>Excluir</Text>
                     </MenuOption>
