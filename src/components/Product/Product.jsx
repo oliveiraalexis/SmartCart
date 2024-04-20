@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { View, Text, StyleSheet } from 'react-native'
 import { Checkbox } from '../Checkbox/Checkbox'
 import { PopupMenu } from '../PopupMenu/PopupMenu'
@@ -8,7 +8,7 @@ import { editItem } from '../../hooks/useStorageManager'
 export const Product = ({listName, product, refreshProducts, toggleProductForm}) => {
 
     const [isSelected, setSelection] = useState(product.checked);
-    const precoTotal = parseFloat(product.qtde) * parseFloat(product.preco)
+    const totalPrice = parseFloat(product.qtde) * parseFloat(product.preco)
     let checkboxColor = isSelected == true ? '#348555' : '#FFFFFF'
     
     function onValueChange(){
@@ -31,7 +31,7 @@ export const Product = ({listName, product, refreshProducts, toggleProductForm})
                         >{product.nome}</Text>
                     </View>
                     <Text style={styles.text}>Quantidade: {product.qtde} {product.tipo}</Text>
-                    <Text style={styles.text}>Preço Total: {usePriceMask(precoTotal.toString())}</Text>
+                    <Text style={styles.text}>Preço Total: {usePriceMask(totalPrice.toString())}</Text>
                 </View>
                 <View style={styles.viewright}>
                     <PopupMenu item={{...product}} storageKey={listName} refreshItemArray={refreshProducts} toggleForm={toggleProductForm}/>

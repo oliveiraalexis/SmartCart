@@ -20,22 +20,22 @@ export const ListDetailScreen = ({route, navigation}) => {
     const [productFormVisible, setProductFormVisible] = useState(false)
     const [productToBeEdited, setProductToBeEdited] = useState({})
     
-    const [produtos, setProdutos] = useState([])
+    const [productsArray, setProductsArray] = useState([])
     const [productsAmount, setProductsAmount] = useState(0)
 
     useEffect(() => {
         const products = search(title)
-        if (products.length >= 0) setProdutos([...products])
+        if (products.length >= 0) setProductsArray([...products])
 
     }, [productFormVisible])
 
     useEffect(() => {
         let amount = 0
-        produtos.map((p, index)=>{
+        productsArray.map((p, index)=>{
             amount += (p.preco * p.qtde)
         })
         setProductsAmount(amount)
-    }, [produtos])
+    }, [productsArray])
 
     const toggleProductForm = (product = {}) => {
         setProductToBeEdited(product)
@@ -44,7 +44,7 @@ export const ListDetailScreen = ({route, navigation}) => {
 
     const refreshProductsArray = () => {
         const products = search(title)
-        if (products.length >= 0) setProdutos([...products])
+        if (products.length >= 0) setProductsArray([...products])
     }
 
     const navigationToListsScreen = () => {
@@ -77,7 +77,7 @@ export const ListDetailScreen = ({route, navigation}) => {
                     <FlatList
                         ref={flatListRef}
                         onContentSizeChange={handleScrollToEnd} 
-                        data={[...produtos]}
+                        data={[...productsArray]}
                         renderItem={(product) => <Product listName={title} product={product.item} toggleProductForm={() => toggleProductForm(product.item)} refreshProducts={refreshProductsArray}/>}
                         ListEmptyComponent={emptyListDetailComponent}
                         ListFooterComponent={listDetailFooterComponent}
@@ -85,7 +85,7 @@ export const ListDetailScreen = ({route, navigation}) => {
                     </FlatList>
                 </View>
                
-                <Footer amount={productsAmount} count={produtos.length}/>
+                <Footer amount={productsAmount} count={productsArray.length}/>
                 {productFormVisible && (<BottomSheet
                     ref={bottomSheetRef}
                     index={0}
