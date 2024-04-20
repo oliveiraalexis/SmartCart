@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, TextInput, Pressable, StyleSheet } from 'react-native'
 
-const AmountInput = ({amount, setQtde}) => {
+const AmountInput = ({amount, setAmount}) => {
     const [value, setValue] = useState(parseInt(amount))
 
     const increment = () => {
@@ -15,7 +15,7 @@ const AmountInput = ({amount, setQtde}) => {
     };
 
     useEffect(() => (
-        setQtde(value)
+        setAmount(value)
 
     ),[value])
 
