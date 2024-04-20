@@ -1,4 +1,4 @@
-export const usePriceMask = (preco) => {
+export const usePriceMask = (price) => {
 
     const maskCurrency = (valor, locale = 'pt-BR', currency = 'BRL') => {
         return new Intl.NumberFormat(locale, {
@@ -7,5 +7,5 @@ export const usePriceMask = (preco) => {
         }).format(valor)
     }
     
-    return maskCurrency(preco)
+    return maskCurrency(price)
 }

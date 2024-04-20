@@ -8,7 +8,7 @@ import { editItem } from '../../hooks/useStorageManager'
 export const Product = ({listName, product, refreshProducts, toggleProductForm}) => {
 
     const [isSelected, setSelection] = useState(product.checked);
-    const totalPrice = parseFloat(product.qtde) * parseFloat(product.preco)
+    const totalPrice = parseFloat(product.quantity) * parseFloat(product.price)
     let checkboxColor = isSelected == true ? '#348555' : '#FFFFFF'
     
     function onValueChange(){
@@ -28,9 +28,9 @@ export const Product = ({listName, product, refreshProducts, toggleProductForm})
                             color: checkboxColor,
                             fontWeight: 'bold',
                             fontSize: 15,}}
-                        >{product.nome}</Text>
+                        >{product.name}</Text>
                     </View>
-                    <Text style={styles.text}>Quantidade: {product.qtde} {product.tipo}</Text>
+                    <Text style={styles.text}>Quantidade: {product.quantity} {product.type}</Text>
                     <Text style={styles.text}>Preço Total: {usePriceMask(totalPrice.toString())}</Text>
                 </View>
                 <View style={styles.viewright}>

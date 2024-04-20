@@ -32,7 +32,7 @@ export const ListDetailScreen = ({route, navigation}) => {
     useEffect(() => {
         let amount = 0
         productsArray.map((p, index)=>{
-            amount += (p.preco * p.qtde)
+            amount += (p.price * p.quantity)
         })
         setProductsAmount(amount)
     }, [productsArray])

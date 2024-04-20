@@ -8,36 +8,36 @@ import AmountInput from '../AmountInput/AmountInput'
 
 export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) => {
     
-    const edition = Object.keys(productToBeEdited).includes("nome", "tipo", "qtde", "preco", "checked")
+    const edition = Object.keys(productToBeEdited).includes("name", "type", "quantity", "price", "checked")
     
-    const [nomeProduto, setNome] = useState(edition ? productToBeEdited.nome : '');
-    const [qtdeProduto, setQtde] = useState(edition ? productToBeEdited.qtde.toString() : '1');
-    const [precoProduto, setPreco] = useState(edition ? productToBeEdited.preco.toString() : '0');
-    const [mascaraPrecoProduto, setMascaraPreco] = useState(edition ? usePriceMask(productToBeEdited.preco.toString()) : usePriceMask('0'));
+    const [productName, setProductName] = useState(edition ? productToBeEdited.name : '');
+    const [productQuantity, setProductQuantity] = useState(edition ? productToBeEdited.quantity.toString() : '1');
+    const [productPrice, setProductPrice] = useState(edition ? productToBeEdited.price.toString() : '0');
+    const [productPriceMask, setProductPriceMask] = useState(edition ? usePriceMask(productToBeEdited.price.toString()) : usePriceMask('0'));
     let newProduct = {}
     
     const [open, setOpen] = useState(false);
-    const [value, setValue] = useState(edition ? productToBeEdited.tipo : 'un');
+    const [value, setValue] = useState(edition ? productToBeEdited.type : 'un');
     const [items, setItems] = useState([
         {label: 'Kg', value: 'kg'},
         {label: 'Un', value: 'un'}
     ]);
     
     useEffect(() => {
-        newProduct = {nome: nomeProduto, tipo: value, qtde: parseInt(qtdeProduto), preco: parseFloat(precoProduto), checked: false}
-    }, [nomeProduto, qtdeProduto, precoProduto, value])
+        newProduct = {name: productName, type: value, quantity: parseInt(productQuantity), price: parseFloat(productPrice), checked: false}
+    }, [productName, productQuantity, productPrice, value])
 
-    const formatarPreco = (preco) => {
+    const formatPrice = (price) => {
 
-        const onlyDigits = preco
+        const onlyDigits = price
             .split("")
             .filter(s => /\d/.test(s))
             .join("")
             .padStart(3, "0")
         const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
 
-        setPreco(digitsFloat)
-        setMascaraPreco(usePriceMask(digitsFloat))
+        setProductPrice(digitsFloat)
+        setProductPriceMask(usePriceMask(digitsFloat))
     }
 
     return (
@@ -47,9 +47,9 @@ export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) =>
                     <Text style={styles.text}>Produto:</Text>
                     <TextInput
                         style={styles.input}
-                        onChangeText={setNome}
-                        value={nomeProduto}
-                        defaultValue={nomeProduto}
+                        onChangeText={setProductName}
+                        value={productName}
+                        defaultValue={productName}
                         maxLength={30}
                     />
                 </View>
@@ -82,24 +82,24 @@ export const ProductForm = ({listName, productToBeEdited, toggleProductForm}) =>
                 <View>
                     <Text style={styles.text}>Quantidade:</Text>
                     <AmountInput
-                        amount={qtdeProduto}
-                        setAmount={setQtde}
+                        amount={productQuantity}
+                        setAmount={setProductQuantity}
                     />
                 </View>
                 <View>
                     <Text style={styles.text}>Preço unitário:</Text>
                     <TextInput
                         style={styles.inputNumber}
-                        onChangeText={formatarPreco}
-                        value={mascaraPrecoProduto}
-                        defaultValue={mascaraPrecoProduto}
+                        onChangeText={formatPrice}
+                        value={productPriceMask}
+                        defaultValue={productPriceMask}
                         keyboardType="numeric"
                         maxLength={9}
                     />
                 </View>
             </View>
             <View style={styles.button}>
-                <Button disabled={nomeProduto == '' || qtdeProduto == '' || parseInt(qtdeProduto) < 1} onPress={!edition ? () => addItem(listName, newProduct, toggleProductForm) : () => editItem(listName, productToBeEdited, newProduct, toggleProductForm)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
+                <Button disabled={productName == '' || productQuantity == '' || parseInt(productQuantity) < 1} onPress={!edition ? () => addItem(listName, newProduct, toggleProductForm) : () => editItem(listName, productToBeEdited, newProduct, toggleProductForm)} iconName={'check'} bRadius={10} bBackgroundColor={'#178b4c'} width={118} height={33}/>
                 <Button onPress={() => toggleProductForm()} iconName={'remove'} bRadius={10} bBackgroundColor={'#8b1717'} width={118} height={33}/>
             </View>
         </View>
