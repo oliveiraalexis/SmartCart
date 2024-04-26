@@ -5,14 +5,14 @@ import { Button } from '../../components/Button/Button'
 import { CardList } from '../../components/CardList/CardList'
 import { ListForm } from '../../components/ListForm/ListForm'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import BottomSheet from '@gorhom/bottom-sheet'
+import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet'
 import { search, save, remove } from '../../services/Storage'
 import { useEffect } from 'react'
 
 export const ListsScreen = ({navigation}) => {
 
     const bottomSheetRef = useRef(null);
-	const snapPoints = useMemo(() => ['30%'], []);
+	const snapPoints = useMemo(() => ['27%'], []);
 
     const [shopLists, setShopLists] = useState([])
     const [ListFormVisible, setListFormVisible] = useState(false)
@@ -76,7 +76,9 @@ export const ListsScreen = ({navigation}) => {
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                     >
-                        <ListForm listToBeEdited={listToBeEdited} toggleListForm={toggleListForm}/>
+                        <BottomSheetScrollView>
+                            <ListForm listToBeEdited={listToBeEdited} toggleListForm={toggleListForm}/>
+                        </BottomSheetScrollView>
                 </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>
