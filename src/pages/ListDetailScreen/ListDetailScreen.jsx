@@ -6,7 +6,7 @@ import { FlatList } from 'react-native'
 import { Button } from '../../components/Button/Button'
 import { Product } from '../../components/Product/Product'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
-import BottomSheet from '@gorhom/bottom-sheet'
+import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet'
 import { ProductForm } from '../../components/ProductForm/ProductForm'
 import { search } from '../../services/Storage'
 
@@ -15,7 +15,7 @@ export const ListDetailScreen = ({route, navigation}) => {
     const title = route.params.title
 
     const bottomSheetRef = useRef(null);
-	const snapPoints = useMemo(() => ['70%'], []);
+	const snapPoints = useMemo(() => ['55%'], []);
     
     const [productFormVisible, setProductFormVisible] = useState(false)
     const [productToBeEdited, setProductToBeEdited] = useState({})
@@ -93,7 +93,9 @@ export const ListDetailScreen = ({route, navigation}) => {
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
                 >
-                    <ProductForm listName={title} productToBeEdited={productToBeEdited} toggleProductForm={toggleProductForm}/>
+                    <BottomSheetScrollView>
+                        <ProductForm listName={title} productToBeEdited={productToBeEdited} toggleProductForm={toggleProductForm}/>
+                    </BottomSheetScrollView>
 			    </BottomSheet>)}
             </SafeAreaView>
         </GestureHandlerRootView>
