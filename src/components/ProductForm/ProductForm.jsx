@@ -160,6 +160,7 @@ const styles = StyleSheet.create({
     button:{
         flexDirection: 'row',
         justifyContent: 'space-evenly',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 20
     }
 })
