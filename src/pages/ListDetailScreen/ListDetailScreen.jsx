@@ -15,7 +15,6 @@ export const ListDetailScreen = ({route, navigation}) => {
     const title = route.params.title
 
     const bottomSheetRef = useRef(null);
-	const snapPoints = useMemo(() => ['55%'], []);
     
     const [productFormVisible, setProductFormVisible] = useState(false)
     const [productToBeEdited, setProductToBeEdited] = useState({})
@@ -89,9 +88,9 @@ export const ListDetailScreen = ({route, navigation}) => {
                 {productFormVisible && (<BottomSheet
                     ref={bottomSheetRef}
                     index={0}
-                    snapPoints={snapPoints}
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
+                    enableDynamicSizing='true'
                 >
                     <BottomSheetScrollView>
                         <ProductForm listName={title} productToBeEdited={productToBeEdited} toggleProductForm={toggleProductForm}/>
