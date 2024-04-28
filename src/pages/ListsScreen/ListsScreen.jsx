@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Text, View, StyleSheet, SafeAreaView, FlatList } from 'react-native'
 import { Header } from '../../components/Header/Header'
 import { Button } from '../../components/Button/Button'
@@ -12,7 +12,6 @@ import { useEffect } from 'react'
 export const ListsScreen = ({navigation}) => {
 
     const bottomSheetRef = useRef(null);
-	const snapPoints = useMemo(() => ['27%'], []);
 
     const [shopLists, setShopLists] = useState([])
     const [ListFormVisible, setListFormVisible] = useState(false)
@@ -72,9 +71,9 @@ export const ListsScreen = ({navigation}) => {
                 {ListFormVisible && (<BottomSheet
                     ref={bottomSheetRef}
                     index={0}
-                    snapPoints={snapPoints}
                     onChange={() => {}}
                     backgroundStyle={{backgroundColor: '#253153'}}
+                    enableDynamicSizing='true'
                     >
                         <BottomSheetScrollView>
                             <ListForm listToBeEdited={listToBeEdited} toggleListForm={toggleListForm}/>
