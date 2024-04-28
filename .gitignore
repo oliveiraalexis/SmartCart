@@ -25,6 +25,7 @@ ios/.xcode.env.local
 # Android/IntelliJ
 #
 build/
+release/
 .idea
 .gradle
 local.properties
@@ -43,6 +44,7 @@ buck-out/
 \.buckd/
 *.keystore
 !debug.keystore
+*.jks
 
 # fastlane
 #
