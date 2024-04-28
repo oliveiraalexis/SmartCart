@@ -16,7 +16,6 @@ export const ListForm = ({listToBeEdited, toggleListForm}) => {
                     onChangeText={setListName}
                     value={listName}
                     defaultValue={listName}
-                    autoFocus={true}
                     maxLength={34}
                 />
             </View>
